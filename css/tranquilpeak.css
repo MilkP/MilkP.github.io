@@ -436,8 +436,8 @@ pre.code-highlight > code {
   background: #fff;
   position: fixed;
   top: 0;
-  border: 1px solid #eef2f8;
-  color: #161616;
+  border: 1px solid #0f0f0f;
+  color: #b1b1b1;
   z-index: 20;
   transition: transform .25s ease-in-out;
   -webkit-transition: -webkit-transform .25s ease-in-out;
@@ -455,7 +455,7 @@ pre.code-highlight > code {
     display: block;
     width: 30px;
     height: 30px;
-    color: #161616; }
+    color: #b1b1b1; }
     #header .header-right-picture .header-picture {
       display: block;
       width: 30px;
@@ -465,17 +465,17 @@ pre.code-highlight > code {
     position: absolute;
     top: 12.5px;
     right: 20px;
-    color: #161616; }
+    color: #b1b1b1; }
   #header .header-title {
     text-align: center;
     font-size: 1.6rem;
     line-height: 55px;
     margin: 0; }
     #header .header-title .header-title-link {
-      color: #161616;
+      color: #b1b1b1;
       font-weight: normal; }
       #header .header-title .header-title-link:hover, #header .header-title .header-title-link:active {
-        color: black;
+        color: #989898;
         text-decoration: none; }
   #header.header-up {
     -webkit-transform: translate3d(0, -55px, 0);
