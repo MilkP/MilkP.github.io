@@ -146,7 +146,7 @@ abbr {
   border-bottom: 1px dotted #5d686f; }
 
 blockquote {
-  border-left: 3px solid #161616;
+  border-left: 3px solid #5d686f;
   padding: 0 15px;
   font-style: italic;
   margin: 1.5em 0 0; }
@@ -248,7 +248,7 @@ pre.code-highlight > code {
       font-size: 1.6rem;
       line-height: 1.9em;
       font-weight: 400;
-      color: #161616; }
+      color: #5d686f; }
 
 @media only screen and (max-width: 767px) {
   #about #about-card {
@@ -634,7 +634,7 @@ pre.code-highlight > code {
   #sidebar .sidebar-container {
     overflow: auto; }
   #sidebar .sidebar-profile {
-    color: #ebebeb;
+    color: #202020;
     text-align: center;
     padding-top: 18px;
     margin-bottom: 15px; }
@@ -643,7 +643,7 @@ pre.code-highlight > code {
       margin: 0 auto; }
     #sidebar .sidebar-profile .sidebar-profile-name {
       font-size: 1.1em;
-      color: #ebebeb; }
+      color: #202020; }
   #sidebar ul.sidebar-buttons {
     padding: 0;
     margin: 0 0 20px 0; }
@@ -653,12 +653,12 @@ pre.code-highlight > code {
       height: 45px;
       line-height: 45px; }
       #sidebar ul.sidebar-buttons li.sidebar-button .sidebar-button-link {
-        color: #ebebeb;
+        color: #202020;
         display: block;
         height: 100%; }
         #sidebar ul.sidebar-buttons li.sidebar-button .sidebar-button-link:hover, #sidebar ul.sidebar-buttons li.sidebar-button .sidebar-button-link:active {
           text-decoration: none;
-          color: white; }
+          color: #797979; }
     #sidebar ul.sidebar-buttons:first-child {
       margin-top: 5px; }
 
@@ -1018,7 +1018,7 @@ pre.code-highlight > code {
       #sidebar[data-behavior="1"] .sidebar-profile .sidebar-profile-location {
         font-weight: 400;
         font-size: 1.6rem;
-        color: #ebebeb; }
+        color: #202020; }
       #sidebar[data-behavior="1"] .sidebar-profile .sidebar-profile-job,
       #sidebar[data-behavior="1"] .sidebar-profile .sidebar-profile-location {
         margin-top: 0;
@@ -1161,7 +1161,7 @@ pre.code-highlight > code {
       #sidebar[data-behavior="4"] .sidebar-profile .sidebar-profile-location {
         font-weight: 400;
         font-size: 1.6rem;
-        color: #ebebeb; }
+        color: #202020; }
       #sidebar[data-behavior="4"] .sidebar-profile .sidebar-profile-job,
       #sidebar[data-behavior="4"] .sidebar-profile .sidebar-profile-location {
         margin-top: 0;
@@ -1573,7 +1573,7 @@ figure.highlight,
   width: 100%;
   border: none;
   outline: none;
-  color: #161616;
+  color: #5d686f;
   font-weight: 300; }
   .form-control:hover, .form-control:focus {
     outline: none; }
@@ -1772,7 +1772,7 @@ a.fancybox {
   color: #9eabb3; }
 
 .media-content {
-  color: #161616; }
+  color: #5d686f; }
 
 .modal-container {
   position: fixed;
@@ -1877,7 +1877,7 @@ a.fancybox {
     text-rendering: optimizelegibility;
     letter-spacing: -0.3px;
     font-family: "Merriweather", serif;
-    color: #161616;
+    color: #5d686f;
     margin-top: 20px;
     font-weight: 400;
     overflow: hidden;
@@ -1967,7 +1967,7 @@ a.fancybox {
     float: right;
     margin: 1.5em 0 1.5em 35px; }
   .pullquote.blur {
-    background-color: #a0a0a0; }
+    background-color: #eef0f1; }
 
 .post-header .post-title {
   margin: 0;
@@ -2161,7 +2161,7 @@ a.fancybox {
     text-rendering: optimizelegibility;
     letter-spacing: -0.3px;
     font-family: "Merriweather", serif;
-    color: #161616;
+    color: #5d686f;
     font-weight: 400;
     overflow: hidden;
     -webkit-hypens: auto;
@@ -2269,7 +2269,7 @@ a.fancybox {
   top: 15px;
   right: 15px;
   font-size: 20px;
-  color: #161616;
+  color: #5d686f;
   cursor: pointer; }
 
 @media only screen and (max-width: 767px) {
@@ -2421,7 +2421,7 @@ a.tag--small,
   text-decoration: underline !important; }
 
 .text-color-base {
-  color: #161616 !important; }
+  color: #5d686f !important; }
 
 .text-color-light {
   color: #9eabb3 !important; }
