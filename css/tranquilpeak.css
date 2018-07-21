@@ -226,10 +226,10 @@ pre.code-highlight > code {
       position: absolute;
       top: 15px;
       right: 15px;
-      color: #0e171d;
+      color: #9eabb3;
       cursor: pointer; }
       #about #about-card #about-btn-close:hover {
-        color: black; }
+        color: #738691; }
     #about #about-card #about-card-picture {
       margin-bottom: 15px; }
     #about #about-card #about-card-name {
@@ -422,7 +422,7 @@ pre.code-highlight > code {
   z-index: -1; }
 
 #footer {
-  color: #0e171d;
+  color: #9eabb3;
   font-size: 1.5rem;
   text-align: center;
   margin-top: 70px;
@@ -437,7 +437,7 @@ pre.code-highlight > code {
   position: fixed;
   top: 0;
   border: 1px solid #eef2f8;
-  color: #88909a;
+  color: #1d1f22;
   z-index: 20;
   transition: transform .25s ease-in-out;
   -webkit-transition: -webkit-transform .25s ease-in-out;
@@ -455,7 +455,7 @@ pre.code-highlight > code {
     display: block;
     width: 30px;
     height: 30px;
-    color: #88909a; }
+    color: #1d1f22; }
     #header .header-right-picture .header-picture {
       display: block;
       width: 30px;
@@ -465,17 +465,17 @@ pre.code-highlight > code {
     position: absolute;
     top: 12.5px;
     right: 20px;
-    color: #88909a; }
+    color: #1d1f22; }
   #header .header-title {
     text-align: center;
     font-size: 1.6rem;
     line-height: 55px;
     margin: 0; }
     #header .header-title .header-title-link {
-      color: #88909a;
+      color: #1d1f22;
       font-weight: normal; }
       #header .header-title .header-title-link:hover, #header .header-title .header-title-link:active {
-        color: #6e7681;
+        color: #060606;
         text-decoration: none; }
   #header.header-up {
     -webkit-transform: translate3d(0, -55px, 0);
@@ -634,7 +634,7 @@ pre.code-highlight > code {
   #sidebar .sidebar-container {
     overflow: auto; }
   #sidebar .sidebar-profile {
-    color: #1b1b1b;
+    color: #ebebeb;
     text-align: center;
     padding-top: 18px;
     margin-bottom: 15px; }
@@ -643,7 +643,7 @@ pre.code-highlight > code {
       margin: 0 auto; }
     #sidebar .sidebar-profile .sidebar-profile-name {
       font-size: 1.1em;
-      color: #1b1b1b; }
+      color: #ebebeb; }
   #sidebar ul.sidebar-buttons {
     padding: 0;
     margin: 0 0 20px 0; }
@@ -653,12 +653,12 @@ pre.code-highlight > code {
       height: 45px;
       line-height: 45px; }
       #sidebar ul.sidebar-buttons li.sidebar-button .sidebar-button-link {
-        color: #1b1b1b;
+        color: #ebebeb;
         display: block;
         height: 100%; }
         #sidebar ul.sidebar-buttons li.sidebar-button .sidebar-button-link:hover, #sidebar ul.sidebar-buttons li.sidebar-button .sidebar-button-link:active {
           text-decoration: none;
-          color: #747474; }
+          color: white; }
     #sidebar ul.sidebar-buttons:first-child {
       margin-top: 5px; }
 
@@ -1018,7 +1018,7 @@ pre.code-highlight > code {
       #sidebar[data-behavior="1"] .sidebar-profile .sidebar-profile-location {
         font-weight: 400;
         font-size: 1.6rem;
-        color: #1b1b1b; }
+        color: #ebebeb; }
       #sidebar[data-behavior="1"] .sidebar-profile .sidebar-profile-job,
       #sidebar[data-behavior="1"] .sidebar-profile .sidebar-profile-location {
         margin-top: 0;
@@ -1161,7 +1161,7 @@ pre.code-highlight > code {
       #sidebar[data-behavior="4"] .sidebar-profile .sidebar-profile-location {
         font-weight: 400;
         font-size: 1.6rem;
-        color: #1b1b1b; }
+        color: #ebebeb; }
       #sidebar[data-behavior="4"] .sidebar-profile .sidebar-profile-job,
       #sidebar[data-behavior="4"] .sidebar-profile .sidebar-profile-location {
         margin-top: 0;
@@ -1353,7 +1353,7 @@ pre.code-highlight > code {
     .archive .archive-posts .archive-post .archive-post-title:hover {
       text-decoration: underline; }
   .archive .archive-posts .archive-post .archive-post-date {
-    color: #0e171d; }
+    color: #9eabb3; }
   .archive .archive-posts .archive-post::before {
     font-family: 'FontAwesome';
     content: '\f0da';
@@ -1382,17 +1382,17 @@ pre.code-highlight > code {
 
 .btn--disabled,
 .btn--disabled:hover {
-  color: #1f323f !important;
-  border: 1px solid #1f323f;
+  color: #bbc4c9 !important;
+  border: 1px solid #bbc4c9;
   cursor: not-allowed;
   text-decoration: none; }
 
 .btn--default {
-  color: #0e171d !important;
-  border: 1px solid #0e171d; }
+  color: #9eabb3 !important;
+  border: 1px solid #9eabb3; }
   .btn--default:hover {
-    color: black !important;
-    border: 1px solid black; }
+    color: #738691 !important;
+    border: 1px solid #738691; }
 
 .btn--success {
   color: #4dc657 !important;
@@ -1427,7 +1427,7 @@ pre.code-highlight > code {
   display: block;
   font-family: "Merriweather", serif;
   font-size: 1.3rem;
-  color: black;
+  color: #81929d;
   text-align: center;
   font-style: italic;
   padding-right: 10px;
@@ -1769,7 +1769,7 @@ a.fancybox {
   margin: 0 0 -5px; }
 
 .media-meta {
-  color: #0e171d; }
+  color: #9eabb3; }
 
 .media-content {
   color: #5d686f; }
@@ -1852,7 +1852,7 @@ a.fancybox {
     .pagination-bar .pagination .pagination-number {
       float: right;
       font-size: 1.3rem;
-      color: #0e171d; }
+      color: #9eabb3; }
 
 .post {
   position: relative;
@@ -1870,9 +1870,9 @@ a.fancybox {
     font-family: "Open Sans", sans-serif;
     font-size: 1.3rem;
     font-weight: 400;
-    color: #0e171d; }
+    color: #9eabb3; }
     .post .post-meta a {
-      color: #0e171d; }
+      color: #9eabb3; }
   .post .post-content {
     text-rendering: optimizelegibility;
     letter-spacing: -0.3px;
@@ -2144,10 +2144,10 @@ a.fancybox {
   .postShorten .postShorten-meta {
     line-height: 1.5em; }
     .postShorten .postShorten-meta a {
-      color: #0e171d; }
+      color: #9eabb3; }
   .postShorten .postShorten-meta,
   .postShorten .postShorten-readingtime {
-    color: #0e171d; }
+    color: #9eabb3; }
   .postShorten .postShorten-excerpt_link {
     margin-top: -15px; }
   .postShorten .postShorten-meta,
@@ -2312,12 +2312,12 @@ a.tag,
 
 a.tag--default,
 .tag--default {
-  color: #0e171d !important;
-  border: 1px solid #0e171d; }
+  color: #9eabb3 !important;
+  border: 1px solid #9eabb3; }
   a.tag--default:hover,
   .tag--default:hover {
-    color: black !important;
-    border: 1px solid black;
+    color: #738691 !important;
+    border: 1px solid #738691;
     text-decoration: none; }
 
 a.tag--success,
@@ -2424,7 +2424,7 @@ a.tag--small,
   color: #5d686f !important; }
 
 .text-color-light {
-  color: #0e171d !important; }
+  color: #9eabb3 !important; }
 
 .text-color-link {
   color: #349ef3 !important; }
