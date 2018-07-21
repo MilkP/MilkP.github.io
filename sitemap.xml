@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://milkp.github.io/2018/06/test/</loc>
+    <lastmod>2018-06-06T22:10:17+08:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://milkp.github.io/archives/</loc>
     <priority>0</priority>
   </url>
@@ -14,6 +19,13 @@
   
   <url>
     <loc>https://milkp.github.io/</loc>
+    <lastmod>2018-06-06T22:10:17+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://milkp.github.io/post/</loc>
+    <lastmod>2018-06-06T22:10:17+08:00</lastmod>
     <priority>0</priority>
   </url>
   
