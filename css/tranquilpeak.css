@@ -143,10 +143,10 @@ code {
 
 acronym,
 abbr {
-  border-bottom: 1px dotted #5d686f; }
+  border-bottom: 1px dotted #161616; }
 
 blockquote {
-  border-left: 3px solid #5d686f;
+  border-left: 3px solid #161616;
   padding: 0 15px;
   font-style: italic;
   margin: 1.5em 0 0; }
@@ -248,7 +248,7 @@ pre.code-highlight > code {
       font-size: 1.6rem;
       line-height: 1.9em;
       font-weight: 400;
-      color: #5d686f; }
+      color: #161616; }
 
 @media only screen and (max-width: 767px) {
   #about #about-card {
@@ -437,7 +437,7 @@ pre.code-highlight > code {
   position: fixed;
   top: 0;
   border: 1px solid #eef2f8;
-  color: #161616;
+  color: #88909a;
   z-index: 20;
   transition: transform .25s ease-in-out;
   -webkit-transition: -webkit-transform .25s ease-in-out;
@@ -455,7 +455,7 @@ pre.code-highlight > code {
     display: block;
     width: 30px;
     height: 30px;
-    color: #161616; }
+    color: #88909a; }
     #header .header-right-picture .header-picture {
       display: block;
       width: 30px;
@@ -465,17 +465,17 @@ pre.code-highlight > code {
     position: absolute;
     top: 12.5px;
     right: 20px;
-    color: #161616; }
+    color: #88909a; }
   #header .header-title {
     text-align: center;
     font-size: 1.6rem;
     line-height: 55px;
     margin: 0; }
     #header .header-title .header-title-link {
-      color: #161616;
+      color: #88909a;
       font-weight: normal; }
       #header .header-title .header-title-link:hover, #header .header-title .header-title-link:active {
-        color: black;
+        color: #6e7681;
         text-decoration: none; }
   #header.header-up {
     -webkit-transform: translate3d(0, -55px, 0);
@@ -1341,7 +1341,7 @@ pre.code-highlight > code {
   display: none; }
 
 .archive .archive-title {
-  color: #5d686f; }
+  color: #161616; }
   .archive .archive-title:hover {
     text-decoration: underline; }
 
@@ -1349,7 +1349,7 @@ pre.code-highlight > code {
   list-style: none; }
   .archive .archive-posts .archive-post .archive-post-title {
     margin-left: 10px;
-    color: #5d686f; }
+    color: #161616; }
     .archive .archive-posts .archive-post .archive-post-title:hover {
       text-decoration: underline; }
   .archive .archive-posts .archive-post .archive-post-date {
@@ -1573,7 +1573,7 @@ figure.highlight,
   width: 100%;
   border: none;
   outline: none;
-  color: #5d686f;
+  color: #161616;
   font-weight: 300; }
   .form-control:hover, .form-control:focus {
     outline: none; }
@@ -1772,7 +1772,7 @@ a.fancybox {
   color: #9eabb3; }
 
 .media-content {
-  color: #5d686f; }
+  color: #161616; }
 
 .modal-container {
   position: fixed;
@@ -1811,7 +1811,7 @@ a.fancybox {
     position: absolute;
     top: 9px;
     right: 15px;
-    color: #5d686f;
+    color: #161616;
     cursor: pointer; }
 
 .overlay {
@@ -1877,7 +1877,7 @@ a.fancybox {
     text-rendering: optimizelegibility;
     letter-spacing: -0.3px;
     font-family: "Merriweather", serif;
-    color: #5d686f;
+    color: #161616;
     margin-top: 20px;
     font-weight: 400;
     overflow: hidden;
@@ -1967,7 +1967,7 @@ a.fancybox {
     float: right;
     margin: 1.5em 0 1.5em 35px; }
   .pullquote.blur {
-    background-color: #eef0f1; }
+    background-color: #a0a0a0; }
 
 .post-header .post-title {
   margin: 0;
@@ -2161,7 +2161,7 @@ a.fancybox {
     text-rendering: optimizelegibility;
     letter-spacing: -0.3px;
     font-family: "Merriweather", serif;
-    color: #5d686f;
+    color: #161616;
     font-weight: 400;
     overflow: hidden;
     -webkit-hypens: auto;
@@ -2269,7 +2269,7 @@ a.fancybox {
   top: 15px;
   right: 15px;
   font-size: 20px;
-  color: #5d686f;
+  color: #161616;
   cursor: pointer; }
 
 @media only screen and (max-width: 767px) {
@@ -2421,7 +2421,7 @@ a.tag--small,
   text-decoration: underline !important; }
 
 .text-color-base {
-  color: #5d686f !important; }
+  color: #161616 !important; }
 
 .text-color-light {
   color: #9eabb3 !important; }
@@ -2576,7 +2576,7 @@ a.tag--small,
     position: absolute;
     top: 15px;
     left: 15px;
-    color: #5d686f; }
+    color: #161616; }
   #algolia-search-modal .media-content {
     font-size: 0.95em; }
   #algolia-search-modal .search-input {
@@ -2594,7 +2594,7 @@ a.tag--small,
     margin-top: 0; }
   #algolia-search-modal .results-count {
     line-height: 50px;
-    color: #5d686f; }
+    color: #161616; }
   #algolia-search-modal .searchby-algolia {
     position: absolute;
     top: 15px;
