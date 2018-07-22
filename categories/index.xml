@@ -10,23 +10,5 @@
 	<atom:link href="https://milkp.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
     
     
-    <item>
-      <title>Features</title>
-      <link>https://milkp.github.io/categories/features/</link>
-      <pubDate>Wed, 06 Jun 2018 22:10:17 +0800</pubDate>
-      
-      <guid>https://milkp.github.io/categories/features/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Tranquilpeak</title>
-      <link>https://milkp.github.io/categories/tranquilpeak/</link>
-      <pubDate>Wed, 06 Jun 2018 22:10:17 +0800</pubDate>
-      
-      <guid>https://milkp.github.io/categories/tranquilpeak/</guid>
-      <description></description>
-    </item>
-    
   </channel>
 </rss>
