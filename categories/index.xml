@@ -10,5 +10,23 @@
 	<atom:link href="https://milkp.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
     
     
+    <item>
+      <title>Hardware</title>
+      <link>https://milkp.github.io/categories/hardware/</link>
+      <pubDate>Sun, 22 Jul 2018 21:13:05 +0800</pubDate>
+      
+      <guid>https://milkp.github.io/categories/hardware/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Pipeline</title>
+      <link>https://milkp.github.io/categories/pipeline/</link>
+      <pubDate>Sun, 22 Jul 2018 21:13:05 +0800</pubDate>
+      
+      <guid>https://milkp.github.io/categories/pipeline/</guid>
+      <description></description>
+    </item>
+    
   </channel>
 </rss>

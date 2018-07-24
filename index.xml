@@ -6,9 +6,20 @@
     <description>Recent content on Nothing but Tech&amp;Art</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
+    <lastBuildDate>Sun, 22 Jul 2018 21:13:05 +0800</lastBuildDate>
     
 	<atom:link href="https://milkp.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>[翻译]Life of a Triangle</title>
+      <link>https://milkp.github.io/2018/07/%E7%BF%BB%E8%AF%91life-of-a-triangle/</link>
+      <pubDate>Sun, 22 Jul 2018 21:13:05 +0800</pubDate>
+      
+      <guid>https://milkp.github.io/2018/07/%E7%BF%BB%E8%AF%91life-of-a-triangle/</guid>
+      <description>&lt;p&gt;核弹厂官方原文，将现代GPU Pipeline简单过了一遍，&lt;a href=&#34;https://developer.nvidia.com/content/life-triangle-nvidias-logical-pipeline&#34;&gt;英文原文&lt;/a&gt;
+&lt;/p&gt;</description>
+    </item>
     
   </channel>
 </rss>
