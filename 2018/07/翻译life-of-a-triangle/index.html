@@ -1,0 +1,658 @@
+
+
+  
+    
+  
+
+
+  
+
+
+
+
+
+  
+
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="generator" content="Hugo 0.41 with theme Tranquilpeak 0.4.3-BETA">
+    <title>[翻译]Life of a Triangle</title>
+    <meta name="author" content="Wang Zuo">
+    <meta name="keywords" content="GPU, Translation">
+
+    <link rel="icon" href="https://milkp.github.io/favicon.png">
+    
+
+    
+    <meta name="description" content="核弹厂官方原文，将现代GPU Pipeline简单过了一遍，英文原文
+">
+    <meta property="og:description" content="核弹厂官方原文，将现代GPU Pipeline简单过了一遍，英文原文
+">
+    <meta property="og:type" content="blog">
+    <meta property="og:title" content="[翻译]Life of a Triangle">
+    <meta property="og:url" content="/2018/07/%E7%BF%BB%E8%AF%91life-of-a-triangle/">
+    <meta property="og:site_name" content="Nothing but Tech&amp;Art">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Nothing but Tech&amp;Art">
+    <meta name="twitter:description" content="核弹厂官方原文，将现代GPU Pipeline简单过了一遍，英文原文
+">
+    
+    
+
+    
+    
+
+    
+      <meta property="og:image" content="https://milkp.github.io/images/Avater.jpg">
+    
+
+    
+      <meta property="og:image" content="https://trello-attachments.s3.amazonaws.com/5846872a549e5a47f557e366/58b552f223a6e6e78c9add35/5f1cd555ba80ace03ec17ae62d52a597/%E4%B8%8A%E4%BC%A0%E4%BA%8E_2017-02-28_%E6%99%9A%E4%B8%8A6%E7%82%B952%E5%88%862%E7%A7%92.png">
+    
+    
+    
+
+    
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/jquery.fancybox.min.css" integrity="sha256-vuXZ9LGmmwtjqFX1F+EKin1ThZMub58gKULUyf0qECk=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/helpers/jquery.fancybox-thumbs.min.css" integrity="sha256-SEa4XYAHihTcEP1f5gARTB2K26Uk8PsndQYHQC1f4jU=" crossorigin="anonymous" />
+    
+    
+    <link rel="stylesheet" href="https://milkp.github.io/css/tranquilpeak.css" />
+    
+    
+
+    
+      
+    
+    
+  </head>
+
+  <body>
+    <div id="blog">
+      <header id="header" data-behavior="4">
+  <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+  <div class="header-title">
+    <a class="header-title-link" href="https://milkp.github.io/">Nothing but Tech&amp;Art</a>
+  </div>
+  
+    
+      <a class="header-right-picture "
+         href="https://milkp.github.io/#about">
+    
+    
+    
+      
+        <img class="header-picture" src="https://milkp.github.io/images/Avater.jpg" alt="作者的图片" />
+      
+    
+    </a>
+  
+</header>
+
+      <nav id="sidebar" data-behavior="4">
+  <div class="sidebar-container">
+    
+      <div class="sidebar-profile">
+        <a href="https://milkp.github.io/#about">
+          <img class="sidebar-profile-picture" src="https://milkp.github.io/images/Avater.jpg" alt="作者的图片" />
+        </a>
+        <h4 class="sidebar-profile-name">Wang Zuo</h4>
+        
+          <h5 class="sidebar-profile-bio">Still Naive, Still Simple</h5>
+        
+      </div>
+    
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://milkp.github.io/">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-home"></i>
+      
+      <span class="sidebar-button-desc">首页</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://milkp.github.io/categories">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-bookmark"></i>
+      
+      <span class="sidebar-button-desc">分类</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://milkp.github.io/tags">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-tags"></i>
+      
+      <span class="sidebar-button-desc">标签</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://milkp.github.io/archives">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-archive"></i>
+      
+      <span class="sidebar-button-desc">归档</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://milkp.github.io/#about">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-question"></i>
+      
+      <span class="sidebar-button-desc">关于</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+
+    </ul>
+  </div>
+</nav>
+
+      
+
+      <div id="main" data-behavior="4"
+        class="
+               hasCoverMetaIn
+               ">
+        <article class="post" itemscope itemType="http://schema.org/BlogPosting">
+          
+          
+            <div class="post-header main-content-wrap text-center">
+  
+    <h1 class="post-title" itemprop="headline">
+      [翻译]Life of a Triangle
+    </h1>
+  
+  
+  <div class="postShorten-meta post-meta">
+    
+      <time itemprop="datePublished" datetime="2018-07-22T21:13:05&#43;08:00">
+        
+  七月 22, 2018
+
+      </time>
+    
+    
+  
+  
+    <span>发布在</span>
+    
+      <a class="category-link" href="https://milkp.github.io/categories/hardware">Hardware</a>, 
+    
+      <a class="category-link" href="https://milkp.github.io/categories/pipeline">Pipeline</a>
+    
+  
+
+  </div>
+
+</div>
+          
+          <div class="post-content markdown" itemprop="articleBody">
+            <div class="main-content-wrap">
+              <p>核弹厂官方原文，将现代GPU Pipeline简单过了一遍，<a href="https://developer.nvidia.com/content/life-triangle-nvidias-logical-pipeline">英文原文</a>
+</p>
+
+<p>&nbsp; &nbsp; &nbsp; &nbsp;自从开创性的Fermi架构发布以来已经过了5年，是时候更新一波它表面下的图形原理了。Fermi是NVIDIA第一款实现可扩展图形引擎的架构，并且它的核心架构也可以在Kepler和Maxwell中找到。接下来这篇文章特别是下面这张压缩过的管线知识参考图应该可以作为一个基于各种公开材料的入门读物，比如说各种关于GPU架构的白皮书或者GTC教程（GPU Technology Conference）。这篇文章会关注关于GPU是如何工作的图形视点，另外像如何计算Shader代码这样的操作运用的原理对于GPU运算来说也是一样的。</p>
+
+<h2 id="pipeline-architecture-image">Pipeline Architecture Image</h2>
+
+<p><img src="https://trello-attachments.s3.amazonaws.com/5846872a549e5a47f557e366/58b552f223a6e6e78c9add35/5f1cd555ba80ace03ec17ae62d52a597/%E4%B8%8A%E4%BC%A0%E4%BA%8E_2017-02-28_%E6%99%9A%E4%B8%8A6%E7%82%B952%E5%88%862%E7%A7%92.png" alt="" /></p>
+
+<h2 id="gpus-are-super-parallel-work-distributors">GPUs are super parallel work distributors</h2>
+
+<ul>
+<li>为什么这一切如此复杂？因为在图形阶段我们必须处理由于创建大量变量导致的数据扩充。每个drawcall可能会生产不同数量的三角形。而经过剪裁后的点的数量与我们最初生成的又不一样。经过背面剔除和深度剔除处理后，不是所有的三角形都需要在显示在屏幕上的。一个三角形在屏幕上的尺寸就意味着需要百万的像素来显示，或者不需要显示的时候就不需要任何像素。</li>
+<li>因此现代GPU使基元（三角形，线，点）遵从逻辑管线，而非物理管线。以前G80架构时代（比如DX9硬件，PS3，XBOX360等），管线体现在不同阶段的芯片不同并且工作会按顺序从一个继续传到下一个。G80本质上会根据负载来重用一些单元来进行点着色和片段着色的计算，但实际上它仍然有一个串行的（a serial process）基元和光栅化过程。而Fermi的进化管线的完全并行化，意味着芯片通过重用各种装置实现了完整的逻辑管线（三角形所经历的各个阶段）。</li>
+<li>让我们设想有两个三角形A和B，他们在逻辑管线中所需要进行的处理步骤可能不同。A已经经过transform，需要进行光栅化。当它上面的一些像素还在处理深度缓冲阶段时，有一些可能已经运行了像素着色，而另一些可能已经被写入了帧缓冲，还有一些可能还在等待处理。而做完这些处理，我们可能需要从头获取B的顶点。因此，虽然每个三角形都必须经过逻辑步骤，但是很多三角形可以在其生命周期的不同步骤中被主动处理。整个任务（获取drawcall的三角形然后将它们搬到屏幕上）被切分成不同的更小份的任务，甚至连这些子任务都可以并行运算。每个任务都会根据可用资源进行安排，而不仅仅局限于任务的当前类型（比如点着色可以和像素着色并行运算）。</li>
+<li>想象一条散开的河流
+<img src="https://trello-attachments.s3.amazonaws.com/5846872a549e5a47f557e366/58b552f223a6e6e78c9add35/9a91bbbdf69fe545e239bb5857f0efef/%E4%B8%8A%E4%BC%A0%E4%BA%8E_2017-03-07_%E4%B8%8B%E5%8D%882%E7%82%B951%E5%88%8616%E7%A7%92.png" alt="" />
+并行管线流中每一条都彼此独立，每一条都有自己的时间线，有一些可能会比其他的有更多分支。如果我们将GPU进行处理所基于的三角形部分的单元或者drawcall当前正在处理的单元进行代码着色的话，看起来会像是七彩的闪烁灯。</li>
+</ul>
+
+<h2 id="gpu-architecture">GPU architecture</h2>
+
+<p><img src="https://trello-attachments.s3.amazonaws.com/5846872a549e5a47f557e366/58b552f223a6e6e78c9add35/e3d32ffbb14e000a2ba2e1d3a2b115ea/%E4%B8%8A%E4%BC%A0%E4%BA%8E_2017-03-07_%E4%B8%8B%E5%8D%883%E7%82%B92%E5%88%8659%E7%A7%92.png" alt="" /></p>
+
+<ul>
+<li>因此Fermi NVIDIA也有一个类似原理的架构。它有一个管理所有工作进行的Giga线程引擎（Giga Thread Engine）。GPU被分割成许多个GPCs（Graphics Processing Cluster 图形处理簇），每个簇都有许多SMs（Streaming Multiprocessor 流多重处理器）和一个光栅引擎（Raster Engine）。这个结构中有许多连接器，尤其是Crossbar，允许工作的迁移穿过GPCs或者其他像ROP（render output unit）这样的功能性单元。</li>
+<li>程序员所考虑的工作（shader程序计算）是在SMs进行处理的。它包含许多为线程进行数学计算的内核（Cores）。举例来说一个线程可能是VS或者PS调用。这些核心和其他单元由Warp Schedulers驱动，Warp Schedulers管理一组32线程的wrap（Wrap：GPU执行程序时的调度单位，目前cuda的warp的大小为32，同在一个warp的线程，以不同数据资源执行相同的指令,这就是所谓 SIMT）并且把要进行处理的指令递交到Dispatch Units（指令调度器）。代码的逻辑由调度器负责处理而不是在核心自身的内部处理，所以从调度程序上看只会看到类似于“计算寄存器4234和寄存器4235的值的和并且储存到寄存器4230中”。相比较CPU那相当聪明的内核来说（GPU的）一个内核本身是挺蠢的。GPU将比较聪明的部件放置到比较高的层级，它会引导整个工作的进行（或者是你想要的多个工作）。</li>
+<li>GPU中实际存在多少个这样的核心（每个GPC多少个SMs，每个GPU有多少个GPCs等）基于芯片配置本身。比如像上面说的GM204有4个GPCs，每个GPC有4个SMs，但是同样是基于Maxwell设计的Tegra X1仅有1个GPC和2个SM。SM自身的设计（内核数量，指令单元，调度器等）也随着时间一代代地进化使得芯片如此高效，以至于它们能广泛应用在高端台式、笔记本和移动平台上。</li>
+</ul>
+
+<h2 id="the-logical-pipeline">The logical pipeline</h2>
+
+<ul>
+<li><p>简单起见，我们省略一些细节。我们假定drawcall引用的一些索引缓冲和点缓冲已经填充进了数据并且存在于GPU的DRAM中，而且也只用了VS和PS（GLSL中称为fragmentshader）。
+<img src="https://trello-attachments.s3.amazonaws.com/5846872a549e5a47f557e366/58b552f223a6e6e78c9add35/7c1522649accb6a29ad1a733d64b7068/%E4%B8%8A%E4%BC%A0%E4%BA%8E_2017-03-08_%E4%B8%8B%E5%8D%882%E7%82%B924%E5%88%8640%E7%A7%92.png" alt="" /></p></li>
+
+<li><p>1.程序在图形API中创建一个drawcall。之后经过一些验证后到达驱动，然后用GPU可读的编码格式将指令插入到Pushbuffer（推送缓存）。这个阶段会产生许多跟CPU侧相关的瓶颈，这就是为什么程序员用好API以及所用技术能充分利用上现代GPU的性能十分重要。</p></li>
+
+<li><p>2.经过一段时间或者直接的“刷新”调用后驱动上已经缓存了足够多的工作到Pushbuffer并将它发送给GPU进行处理（以及一些操作系统的参与）。GPU的主接口（Host Interface）获取到经过前端（Front End）处理的指令。</p></li>
+
+<li><p>3.之后我们开始在基元分配器（Primitive Distributor）中开始分配的工作。在这里会对索引缓冲中的序列进行处理，并且批量生成之后我们会将其发送给多个GPC上的三角形。
+<img src="https://trello-attachments.s3.amazonaws.com/5846872a549e5a47f557e366/58b552f223a6e6e78c9add35/196b4cc45bf89ea6dcbfebc0093f771d/%E4%B8%8A%E4%BC%A0%E4%BA%8E_2017-03-08_%E4%B8%8B%E5%8D%883%E7%82%B97%E5%88%8622%E7%A7%92.png" alt="" /></p></li>
+
+<li><p>4.在GPC中，SM中的多边形变形引擎（Poly Morph Engine）负责根据三角形序列获取顶点数据（Vertex Fetch）。</p></li>
+
+<li><p>5.获取到数据后，SM内部就会调度32线程的warp然后开始进行顶点处理工作。</p></li>
+
+<li><p>6.SM的warp调度器会根据顺序为整个warp分发指令。每个线程锁步（lock -step）地运算每个指令，如果线程不应该主动执行，则可以单独屏蔽掉。需要这种屏蔽的原因有许多。比如如果当前的指令是一个if-true分支的一部分并且具体运算结果是false，或者当一个循环条件的终止条件在一个线程时刚好满足而不是另外一个线程中时。<strong>所以一个有许多分支结构的shader会显著地增加在warp中所有线程上所消耗的时间</strong>。线程不能单独推进到下一步，只有作为整个warp的时候才行，虽然warp也是互相独立的。</p></li>
+
+<li><p>7.warp指令可能会一次性完成，也可能会耗费几个发送回合。SM通常比进行基本数学运算具有更少的加载/存储单位。</p></li>
+
+<li><p>8.由于一些指令处理会比其他的消耗跟多的时间，特别是内存加载，因此warp调度程序可能只是切换到另一个不等待内存的warp。这就是GPU克服内存延迟的关键概念，GPU只是简单地切换活动的线程组。为了保证切换足够快速，所有被调度器管理的线程都在寄存器堆（register-file）中有自己的寄存器。shader程序所需要的寄存器越多，线程/warp所有用的空间就越少。而我们可以用于切换的warp越少，我们在等待指令完成（最重要的是内存获取）的过程中所能做的工作就越少。（因为正在获取内存的warp不会用来做其他工作，所以只能跳转到空闲的warp上）
+<img src="https://trello-attachments.s3.amazonaws.com/5846872a549e5a47f557e366/58b552f223a6e6e78c9add35/be969e7368ec8a168d7da4566c232899/%E4%B8%8A%E4%BC%A0%E4%BA%8E_2017-03-08_%E4%B8%8B%E5%8D%884%E7%82%B91%E5%88%8619%E7%A7%92.png" alt="" /></p></li>
+
+<li><p>9.一旦warp完成了所有VS的指令运算，结果会被视口转换（Viewport Transform）处理。三角形会被裁剪空间体裁剪，至此就做好了光栅化的准备。我们使用L1和L2缓存来存储所有这些跨任务通讯的数据。
+<img src="https://trello-attachments.s3.amazonaws.com/5846872a549e5a47f557e366/58b552f223a6e6e78c9add35/5da3a991966899aea488b03fb97cfe9c/%E4%B8%8A%E4%BC%A0%E4%BA%8E_2017-03-08_%E4%B8%8B%E5%8D%884%E7%82%B91%E5%88%8637%E7%A7%92.png" alt="" /></p></li>
+
+<li><p>10.现在过程变得令人兴奋了，我们的三角形被切分并且可能会离开目前它存在的这个GPC。由于每个光栅引擎会覆盖多个屏幕的上的连块，所以三角形的边界框会用来判断哪个光栅引擎会被用来处理这个三角形。之后我们的三角形通过任务分配交叉线（Work Distribution Crossbar）被发送到一个或者多个GPC上。现在我们有效地将我们的三角形切分成许多更小型的任务了。</p></li>
+
+<li><p><img src="https://trello-attachments.s3.amazonaws.com/5846872a549e5a47f557e366/58b552f223a6e6e78c9add35/4747b4efb6c0f4227cab651369c639c6/%E4%B8%8A%E4%BC%A0%E4%BA%8E_2017-03-08_%E4%B8%8B%E5%8D%884%E7%82%B912%E5%88%8659%E7%A7%92.png" alt="" /></p></li>
+
+<li><p>11.目标SM中的属性设置（Attribute Setup）会确保插值（比如我们我们从VS中生成的输出）用的是对PS友好的格式。</p></li>
+
+<li><p>12.GPC的光栅引擎对接受到的三角形进行处理，并为它负责的那些部分生成像素信息（也处理背面剔除和Z-cull）。</p></li>
+
+<li><p>13.我们再次来分批处理32像素的线程，更贴切的说是处理8次2x2像素的方格，一般来说这是我们将要在PS中处理的最小单位。这个2x2方格允许我们计算一些类似于mip map过滤之类的工作（方格中纹理坐标太大会导致更高的mip）。那些采样位置没有真正意义上覆盖三角形的2*2方格中的线程会被屏蔽。一个本地SM的warp调度器会对PS任务进行管理。</p></li>
+
+<li><p>14.我们在VS逻辑阶段进行过的同样的warp调度器指令游戏现在跑在了PS线程上。锁步处理十分有用，因为我们几乎可以自由的存取像素格内的值，因为所有的线程都会被确保他们的数据被计算成了相同的指令指针。
+<img src="https://trello-attachments.s3.amazonaws.com/5846872a549e5a47f557e366/58b552f223a6e6e78c9add35/9047daf23a0ce9ece506f0abcc70637b/%E4%B8%8A%E4%BC%A0%E4%BA%8E_2017-03-08_%E4%B8%8B%E5%8D%885%E7%82%B917%E5%88%860%E7%A7%92.png" alt="" /></p></li>
+
+<li><p>15.我们到终点了吗？快了，由于对PS进行了计算，我们已经得知了要向渲染目标（Render Target：即一块backbuffer 离屏缓冲，或者可以理解为一个和输出像素等高宽的平面，可以将物件渲染到这里进行后续处理）写入的颜色并且我们也有了深度信息。此时我们必须考虑三角形的原始API顺序，然后才将数据传递给ROP（渲染输出单元）子系统之一，这些子系统本身具有多个ROP单元。在这里深度测试，帧缓冲混合等处理已经进行了处理。这些操作需要在原子级别上运作（一次设置一种颜色/深度）以确保我们不会在同一个像素上设置了一个三角形的颜色又设置了另一个三角形的深度值。NVIDIA通常采用内存压缩，以降低内存带宽要求，从而增加“有效”带宽。</p></li>
+
+<li><p>赞，我们已经完成了，我们写入了一些像素值到渲染目标（Render Target）。我希望这些信息对于理解GPU内部的工作流/数据流有所帮助。当然另一方面也可以帮助理解为什么与CPU同步工作是相当痛苦的。有一点就是如果没有新任务提交进来GPU就必须等待所有CPU的处理完成（所有单元都会变成闲置状态），这意味着当有新任务发送进来时需要等待一段时间才能达到完全负载的状态下，尤其是大型GPU更为明显。</p></li>
+
+<li><p>在下面的这张图中你可以看见我们如何渲染一个CAD模型并且使用不同的SM或者warp id对其上色后显示出的不同效果。结果不是帧连续的，因为帧与帧之间的工作分配会产生改变。整个场景渲染用了许多drawcall，其中的一些也可以进行并行处理（使用NSIGHT你也看见一些drawcall的并行处理）。
+<img src="https://trello-attachments.s3.amazonaws.com/5846872a549e5a47f557e366/58b552f223a6e6e78c9add35/ddbb6909f69cd274bd52afb29af9b69d/%E4%B8%8A%E4%BC%A0%E4%BA%8E_2017-03-09_%E4%B8%8B%E5%8D%883%E7%82%B954%E5%88%8653%E7%A7%92.png" alt="" /></p></li>
+</ul>
+              
+            </div>
+          </div>
+          <div id="post-footer" class="post-footer main-content-wrap">
+            
+              
+                
+                
+                  <div class="post-footer-tags">
+                    <span class="text-color-light text-small">标签</span><br/>
+                    
+  <a class="tag tag--primary tag--small" href="https://milkp.github.io/tags/hardware/">Hardware</a>
+
+  <a class="tag tag--primary tag--small" href="https://milkp.github.io/tags/rendering/">Rendering</a>
+
+  <a class="tag tag--primary tag--small" href="https://milkp.github.io/tags/translation/">Translation</a>
+
+                  </div>
+                
+              
+            
+            
+  <div class="post-actions-wrap">
+      <nav >
+        <ul class="post-actions post-action-nav">
+          
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--disabled">
+              
+                  <i class="fa fa-angle-left"></i>
+                  <span class="hide-xs hide-sm text-small icon-ml">下一篇</span>
+                </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://milkp.github.io/2018/06/test/" data-tooltip="Test">
+              
+                  <span class="hide-xs hide-sm text-small icon-mr">上一篇</span>
+                  <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+          
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://milkp.github.io/2018/07/%E7%BF%BB%E8%AF%91life-of-a-triangle/">
+              <i class="fa fa-facebook-official"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://milkp.github.io/2018/07/%E7%BF%BB%E8%AF%91life-of-a-triangle/">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://milkp.github.io/2018/07/%E7%BF%BB%E8%AF%91life-of-a-triangle/">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          </li>
+        
+      
+      
+        <li class="post-action">
+          <a class="post-action-btn btn btn--default" href="#disqus_thread">
+            <i class="fa fa-comment-o"></i>
+          </a>
+        </li>
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+
+            
+              
+                <div id="disqus_thread">
+  <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+              
+            
+          </div>
+        </article>
+        <footer id="footer" class="main-content-wrap">
+  <span class="copyrights">
+    &copy; 2018 Wang Zuo. All Rights Reserved
+  </span>
+</footer>
+
+      </div>
+      <div id="bottom-bar" class="post-bottom-bar" data-behavior="4">
+        
+  <div class="post-actions-wrap">
+      <nav >
+        <ul class="post-actions post-action-nav">
+          
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--disabled">
+              
+                  <i class="fa fa-angle-left"></i>
+                  <span class="hide-xs hide-sm text-small icon-ml">下一篇</span>
+                </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://milkp.github.io/2018/06/test/" data-tooltip="Test">
+              
+                  <span class="hide-xs hide-sm text-small icon-mr">上一篇</span>
+                  <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+          
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://milkp.github.io/2018/07/%E7%BF%BB%E8%AF%91life-of-a-triangle/">
+              <i class="fa fa-facebook-official"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://milkp.github.io/2018/07/%E7%BF%BB%E8%AF%91life-of-a-triangle/">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://milkp.github.io/2018/07/%E7%BF%BB%E8%AF%91life-of-a-triangle/">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          </li>
+        
+      
+      
+        <li class="post-action">
+          <a class="post-action-btn btn btn--default" href="#disqus_thread">
+            <i class="fa fa-comment-o"></i>
+          </a>
+        </li>
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+
+      </div>
+      <div id="share-options-bar" class="share-options-bar" data-behavior="4">
+  <i id="btn-close-shareoptions" class="fa fa-close"></i>
+  <ul class="share-options">
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fmilkp.github.io%2F2018%2F07%2F%25E7%25BF%25BB%25E8%25AF%2591life-of-a-triangle%2F">
+          <i class="fa fa-facebook-official"></i><span>分享到 Facebook</span>
+        </a>
+      </li>
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2Fmilkp.github.io%2F2018%2F07%2F%25E7%25BF%25BB%25E8%25AF%2591life-of-a-triangle%2F">
+          <i class="fa fa-twitter"></i><span>分享到 Twitter</span>
+        </a>
+      </li>
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=https%3A%2F%2Fmilkp.github.io%2F2018%2F07%2F%25E7%25BF%25BB%25E8%25AF%2591life-of-a-triangle%2F">
+          <i class="fa fa-google-plus"></i><span>分享到 Google&#43;</span>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+<div id="share-options-mask" class="share-options-mask"></div>
+    </div>
+    
+    <div id="about">
+  <div id="about-card">
+    <div id="about-btn-close">
+      <i class="fa fa-remove"></i>
+    </div>
+    
+      <img id="about-card-picture" src="https://milkp.github.io/images/Avater.jpg" alt="作者的图片" />
+    
+    <h4 id="about-card-name">Wang Zuo</h4>
+    
+      <div id="about-card-bio">Still Naive, Still Simple</div>
+    
+    
+      <div id="about-card-job">
+        <i class="fa fa-briefcase"></i>
+        <br/>
+        Game | Tech | Art
+      </div>
+    
+    
+      <div id="about-card-location">
+        <i class="fa fa-map-marker"></i>
+        <br/>
+        ShangHai
+      </div>
+    
+  </div>
+</div>
+
+    <div id="algolia-search-modal" class="modal-container">
+  <div class="modal">
+    <div class="modal-header">
+      <span class="close-button"><i class="fa fa-close"></i></span>
+      <a href="https://algolia.com" target="_blank" rel="noopener" class="searchby-algolia text-color-light link-unstyled">
+        <span class="searchby-algolia-text text-color-light text-small">by</span>
+        <img class="searchby-algolia-logo" src="https://www.algolia.com/static_assets/images/press/downloads/algolia-light.svg">
+      </a>
+      <i class="search-icon fa fa-search"></i>
+      <form id="algolia-search-form">
+        <input type="text" id="algolia-search-input" name="search"
+          class="form-control input--large search-input" placeholder="搜索" />
+      </form>
+    </div>
+    <div class="modal-body">
+      <div class="no-result text-color-light text-center"></div>
+      <div class="results">
+        
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://milkp.github.io/2018/07/%E7%BF%BB%E8%AF%91life-of-a-triangle/">
+                <h3 class="media-heading">[翻译]Life of a Triangle</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jul 7, 2018
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>核弹厂官方原文，将现代GPU Pipeline简单过了一遍，<a href="https://developer.nvidia.com/content/life-triangle-nvidias-logical-pipeline">英文原文</a>
+</p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://milkp.github.io/2018/06/test/">
+                <h3 class="media-heading">Test</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jun 6, 2018
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"> Just a Test Test
+</div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+      </div>
+    </div>
+    <div class="modal-footer">
+      <p class="results-count text-medium"
+         data-message-zero=""
+         data-message-one=""
+         data-message-other="">
+         2 posts found
+      </p>
+    </div>
+  </div>
+</div>
+    
+  
+    
+    <div id="cover" style="background-image:url('https://milkp.github.io/images/cover1.jpg');"></div>
+  
+
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js" integrity="sha256-/BfiIkHlHoVihZdc6TFuj7MmJ0TWcWsMXkeDFwhi0zw=" crossorigin="anonymous"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.7/js/jquery.fancybox.min.js" integrity="sha256-GEAnjcTqVP+vBp3SSc8bEDQqvWAZMiHyUSIorrWwH50=" crossorigin="anonymous"></script>
+
+
+<script src="https://milkp.github.io/js/tranquilpeak.js"></script>
+
+
+
+<script>
+$(document).ready(function() {
+  hljs.configure({ classPrefix: '', useBR: false });
+  $('pre.code-highlight > code, pre > code').each(function(i, block) {
+    if (!$(this).hasClass('codeblock')) {
+      $(this).addClass('codeblock');
+    }
+    hljs.highlightBlock(block);
+  });
+});
+</script>
+
+
+  
+    
+      <script>
+        var disqus_config = function () {
+          this.page.url = 'https:\/\/milkp.github.io\/2018\/07\/%E7%BF%BB%E8%AF%91life-of-a-triangle\/';
+          
+            this.page.identifier = '\/2018\/07\/%E7%BF%BB%E8%AF%91life-of-a-triangle\/'
+          
+        };
+        (function() {
+          
+          
+          if (window.location.hostname == "localhost") {
+            return;
+          }
+          var d = document, s = d.createElement('script');
+          var disqus_shortname = 'blurry';
+          s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+
+          s.setAttribute('data-timestamp', +new Date());
+          (d.head || d.body).appendChild(s);
+        })();
+      </script>
+    
+  
+
+
+
+    
+  </body>
+</html>
+
