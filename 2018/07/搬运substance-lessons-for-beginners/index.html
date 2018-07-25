@@ -1,0 +1,649 @@
+
+
+  
+    
+  
+
+
+  
+
+
+
+
+
+  
+
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="generator" content="Hugo 0.41 with theme Tranquilpeak 0.4.3-BETA">
+    <title>[搬运]Substance Lessons for Beginners</title>
+    <meta name="author" content="Wang Zuo">
+    <meta name="keywords" content="Substance Designer, Translation">
+
+    <link rel="icon" href="https://milkp.github.io/favicon.png">
+    
+
+    
+    <meta name="description" content="这是SD老鸟Ben Keeling发表在A站上的博文，文中点出的这几个问题其实不止初学者，一些熟手在制作材质过程中也会出现，所以觉得还是挺干货的，特此搬运。
+">
+    <meta property="og:description" content="这是SD老鸟Ben Keeling发表在A站上的博文，文中点出的这几个问题其实不止初学者，一些熟手在制作材质过程中也会出现，所以觉得还是挺干货的，特此搬运。
+">
+    <meta property="og:type" content="blog">
+    <meta property="og:title" content="[搬运]Substance Lessons for Beginners">
+    <meta property="og:url" content="/2018/07/%E6%90%AC%E8%BF%90substance-lessons-for-beginners/">
+    <meta property="og:site_name" content="Nothing but Tech&amp;Art">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Nothing but Tech&amp;Art">
+    <meta name="twitter:description" content="这是SD老鸟Ben Keeling发表在A站上的博文，文中点出的这几个问题其实不止初学者，一些熟手在制作材质过程中也会出现，所以觉得还是挺干货的，特此搬运。
+">
+    
+    
+
+    
+    
+
+    
+      <meta property="og:image" content="https://milkp.github.io/images/Avater.jpg">
+    
+
+    
+      <meta property="og:image" content="https://cdnb.artstation.com/p/media_assets/images/images/000/273/537/medium/alina_godfrey-introduction_to_substance_for_environment_art-wk1-1884759239.jpg?1530817633">
+    
+    
+    
+
+    
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/jquery.fancybox.min.css" integrity="sha256-vuXZ9LGmmwtjqFX1F+EKin1ThZMub58gKULUyf0qECk=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/helpers/jquery.fancybox-thumbs.min.css" integrity="sha256-SEa4XYAHihTcEP1f5gARTB2K26Uk8PsndQYHQC1f4jU=" crossorigin="anonymous" />
+    
+    
+    <link rel="stylesheet" href="https://milkp.github.io/css/tranquilpeak.css" />
+    
+    
+
+    
+      
+    
+    
+  </head>
+
+  <body>
+    <div id="blog">
+      <header id="header" data-behavior="4">
+  <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+  <div class="header-title">
+    <a class="header-title-link" href="https://milkp.github.io/">Nothing but Tech&amp;Art</a>
+  </div>
+  
+    
+      <a class="header-right-picture "
+         href="https://milkp.github.io/#about">
+    
+    
+    
+      
+        <img class="header-picture" src="https://milkp.github.io/images/Avater.jpg" alt="作者的图片" />
+      
+    
+    </a>
+  
+</header>
+
+      <nav id="sidebar" data-behavior="4">
+  <div class="sidebar-container">
+    
+      <div class="sidebar-profile">
+        <a href="https://milkp.github.io/#about">
+          <img class="sidebar-profile-picture" src="https://milkp.github.io/images/Avater.jpg" alt="作者的图片" />
+        </a>
+        <h4 class="sidebar-profile-name">Wang Zuo</h4>
+        
+          <h5 class="sidebar-profile-bio">Still Naive, Still Simple</h5>
+        
+      </div>
+    
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://milkp.github.io/">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-home"></i>
+      
+      <span class="sidebar-button-desc">首页</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://milkp.github.io/categories">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-bookmark"></i>
+      
+      <span class="sidebar-button-desc">分类</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://milkp.github.io/tags">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-tags"></i>
+      
+      <span class="sidebar-button-desc">标签</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://milkp.github.io/archives">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-archive"></i>
+      
+      <span class="sidebar-button-desc">归档</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://milkp.github.io/#about">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-question"></i>
+      
+      <span class="sidebar-button-desc">关于</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+
+    </ul>
+  </div>
+</nav>
+
+      
+
+      <div id="main" data-behavior="4"
+        class="
+               hasCoverMetaIn
+               ">
+        <article class="post" itemscope itemType="http://schema.org/BlogPosting">
+          
+          
+            <div class="post-header main-content-wrap text-center">
+  
+    <h1 class="post-title" itemprop="headline">
+      [搬运]Substance Lessons for Beginners
+    </h1>
+  
+  
+  <div class="postShorten-meta post-meta">
+    
+      <time itemprop="datePublished" datetime="2018-07-25T23:27:24&#43;08:00">
+        
+  七月 25, 2018
+
+      </time>
+    
+    
+  
+  
+    <span>发布在</span>
+    
+      <a class="category-link" href="https://milkp.github.io/categories/substance">Substance</a>, 
+    
+      <a class="category-link" href="https://milkp.github.io/categories/designer">Designer</a>
+    
+  
+
+  </div>
+
+</div>
+          
+          <div class="post-content markdown" itemprop="articleBody">
+            <div class="main-content-wrap">
+              <p>这是SD老鸟<a href="https://www.artstation.com/benkeeling/blog/OWGX/substance-lessons-for-beginners">Ben Keeling</a>发表在A站上的博文，文中点出的这几个问题其实不止初学者，一些熟手在制作材质过程中也会出现，所以觉得还是挺干货的，特此搬运。
+</p>
+
+<h3 id="在gradient节点中使用过多的key">在Gradient节点中使用过多的key</h3>
+
+<p>当人们开始使用Gradient Map节点时，会习惯性的使用采样节点（Pick Gradient）功能，这个功能会对一张图（其实是一个划定范围）进行采样并生成gradient key。这是个有趣且实用的功能，但是如果没有进行很好地优化的话之后的编辑将会是个噩梦。所以Pick Gradient之后对Key进行清理是个很值当的工作。如果有太多key则基本上就不能编辑了。如果你进入了一个专业环境下，那么你会发现这是个很好的做法
+<img src="https://cdna.artstation.com/p/media_assets/images/images/000/273/326/original/Gradient_Map.gif?1530737984" alt="" /></p>
+
+<h3 id="grascale与colour-blending">Grascale与colour blending</h3>
+
+<p>有个好习惯是遵守这个规则：使用grascale模式来创建你的height/roughness/metallic，使用colour模式来创建你的diffuse/normal。虽然不是100%所有节点，但是通常在同一个节点中会有切换选项。你可以通过同一个节点的两个版本或者一个切换开关，在grayscale和colour两个模式之间切换。这一点十分重要，因为使用grascale可以节省很多性能。而当你使用某些节点时，如果你使用了不对应的输入时，你会看到SD会自动的添加转换节点来在两种模式间转换。这样会增加不必要的节点，并且不过对结果有任何改进，所以有必要指出这个问题。
+<img src="https://cdnb.artstation.com/p/media_assets/images/images/000/273/251/large/2018-07-04_13-41-14.jpg?1530708237" alt="" />
+<em>同个节点的不同版本</em>
+<img src="https://cdnb.artstation.com/p/media_assets/images/images/000/273/421/large/2018-07-05_13-06-21.jpg?1530792418" alt="" /></p>
+
+<h3 id="对normal-maps进行blending">对normal maps进行blending</h3>
+
+<p>初学者们还喜欢blend一堆normal，绝大多数情况下这样做其实并没有意义。最好是能先专注于得到一个完美的height map。这能使你更好地驱动之后的其他贴图并更好的混合材质。当然凡事都有例外，比如有时你会想要分别控制height和normal。植被就是一个典型的例子。
+<img src="https://cdna.artstation.com/p/media_assets/images/images/000/273/346/medium/Screenshot_1.jpg?1530741499" alt="" /></p>
+
+<h3 id="从总体到细节与grunge-map">从总体到细节与grunge map</h3>
+
+<p>首先从一个大的结构开局并添加不同大小的细节是一个很好的做法，这样可以保证材质在任何时候有细节并且达到各层次细节之间的平衡，另外还能帮助你的材质有更好的精确度。我所见过的一种错误的做法是过早地在十分grungy的贴图上使用slope blurs，这会产生很燥（noisy）的材质。你会发现这样做丢失了很多从宏观到微观上的一系列细节。添加一些颗粒细节是个很棒的过程，但是这应该发生在大结构已经确立的情况下。
+<img src="https://cdnb.artstation.com/p/media_assets/images/images/000/273/425/original/HeightMap.gif?1530793212" alt="" /><br />
+<em>从宏观再到微观的例子</em></p>
+
+<h3 id="依靠grunge-map去生成材质中的基本形状-base-shapes">依靠grunge map去生成材质中的基本形状（base shapes）</h3>
+
+<p>在课程的第一周（作者在CGMA上有开课程），我设置了一些简单的pattern让学生去创建。其中一个是树皮的材质。这其实是一个比较复杂的pattern了，学生们很自然地就想到从library中寻找最快速最简单达到效果的方法，就是Grunge Map 005这张grunge map。这样其实也没错，即快速也轻松，但是Designer的优势在于其迭代性和程序生成方面。所以更好的做法是打破树皮的结构，因为作为一个artist，这意味着你在今后可以对这个材质有更多的控制权。他的可控性更高，如果需要的话你完全可以创建出另一种树皮材质来。如果未来你还需要同类型材质的另一个版本，那么打破它的原始结构意味着你会拥有一个很好的开始。
+<img src="https://cdnb.artstation.com/p/media_assets/images/images/000/273/437/medium/Untitled-2.jpg?1530794088" alt="" />
+VS
+<img src="https://cdnb.artstation.com/p/media_assets/images/images/000/273/531/medium/Untitled-1.jpg?1530815583" alt="" /></p>
+
+<h3 id="过度的进行变形-warping">过度的进行变形（warping）</h3>
+
+<p>当我看到一些artist开始Designer工作时会有许多过度变形的形状。Warping是一个很不错的工具但是如果过度使用它会将像素糊到一起。过度的变形看起来会十分不自然并得到很不舒服的结果。</p>
+
+<h3 id="不正确的pbr值">不正确的PBR值</h3>
+
+<p>这可能给是我所见过在Designer新手遇到的问题中排名No.1的问题，甚至在一些老手中也时不时会出现。对于PBR，base color的值是正确的RGB值这一点十分重要。通常在制作材质时，我们会倾向于在一个有光照的环境中查看材质并且并不会经常地去改变这个光照环境。这会导致你的材质可以在目前的条件下看起来很棒，但是一旦在其他环境中使用它效果就不行了。这也绝对是我对自己感到内疚的事，但是在我的职业生涯中通过与各种不同的灯光设置和时间线设置一起工作帮助我明白了这件事多么的重要。这样做带来的另一个好处是可以结合光照做一件非常有创意的事：你可以制作一个非常暗的夜晚场景并且基本上没有自然光或者非常明亮的日光场景，然后你就可以知道你的材质效果依然优秀！
+为了确保你的材质足够灵活可以在各种环境使用，请对照一下图表连接：<br />
+<a href="https://seblagarde.files.wordpress.com/2014/04/dontnodgraphicchartforunrealengine4.png">Don&rsquo;t Nod Chart</a><br />
+<a href="https://i.pinimg.com/736x/9b/6c/72/9b6c721cc8c72ae7d6dbfbfd8baf0569--tech-art-cheat-sheets.jpg">Material Cheat Sheet</a><br />
+<a href="https://i.pinimg.com/736x/bd/3d/3c/bd3d3c60d2fb66bc75f73da3a16e4ba5.jpg">Unity Sheet </a><br />
+<a href="https://i.pinimg.com/736x/8d/86/de/8d86dece5ef56460b48edc6bb5766cc1.jpg">Megascans Chart</a></p>
+
+<h3 id="为diffuse添加局部颜色变化-为roughness添加局部变化">为diffuse添加局部颜色变化，为roughness添加局部变化。</h3>
+
+<p>观察扫描数据，你可以发现albedo有多少并非是光照导致变化。在我制作和拖进我的材质的时候，曾经尝试使用这些细节并从扫描数据进行学习。使用生成器和grunge是一个很好地获取这些信息的方式，并且还能很好地使你的normal和height信息对齐。
+<img src="https://cdna.artstation.com/p/media_assets/images/images/000/273/444/medium/Scan.jpg?1530794874" alt="" /></p>
+
+<h3 id="拉远看你的材质">拉远看你的材质</h3>
+
+<p>一个常见的错误是在近距离创建许多超赞的细节和内容却没有考虑到拉远看材质效果如何。这意味着你不会察觉到从远处看你的材质时会遇到重复性过高的问题。理想状况下，你需要一种在近处和远处都效果不错的材质。这确实难以取得一个平衡。某些情况下在材质中放入一些特殊的细节也可以达到不错的效果，比如不是很常见的vertex blend。拉远观察可以帮助定位问题并帮助平衡你的材质。同样的拉近处理也可以确保近距离上的效果。记住你的材质的用处并且去针对性的处理是一个很好的习惯。</p>
+
+<h3 id="设置精确的材质属性">设置精确的材质属性</h3>
+
+<p>当我审阅学生的作业时我会看到大量的金属砖（吐槽做了砖块细节却没有正确表达材质属性）。尽管反射可以帮助辨识材质上的细节（高反射下容易看出细节），但是最好的做法还是尝试使你的材质表达出它构成的物质类型。</p>
+
+<h3 id="使用blur来增加细节">使用blur来增加细节</h3>
+
+<p>这其实非常直观，但是我会经常使用的例子是一张polycount上的关于烘焙的图。将height模糊一定量，你可以为贴图分配更多的像素。类似于在3D中进行倒角。这是在创建精美的normal时需要记住的重要技术。
+<img src="https://cdnb.artstation.com/p/media_assets/images/images/000/273/439/medium/328px-Normal_slopes_hatred.jpg?1530794244" alt="" /></p>
+
+<h3 id="比例与变化">比例与变化</h3>
+
+<p>在材质制作过程中可能很难知道需要放入砖块材质中的砖块数量，或者沙层材质上起伏的沙丘的数量。我发现最好是先查看之前已有的材质并亲自试验来找出一个良好的平衡。请记住，纹理上单个元素比例越大，它的贴图分辨率就越高。这是一种平衡的行为，因为你会想要做尽可能多的变化。我见过许多学生在一个材质中放入大量的砖块，尽管他们有许多的变化，但是最后材质变得混浊且分辨率很低。
+另外注意你的substance中的内容也很重要。我曾经见过很多富有激情的或者兴奋的学生想要创建十分惊艳的效果，结果由于想要得到更多的效果导致了十分复杂的图形。尽量不要在一个材质中上创建同时具有破损和粉刷层的砖块，而是保持简洁，并将其作为各自独立的资产。
+<img src="https://cdnb.artstation.com/p/media_assets/images/images/000/273/537/medium/alina_godfrey-introduction_to_substance_for_environment_art-wk1-1884759239.jpg?1530817633" alt="" /><br />
+<em>具有优秀的比例和简单一致的材质的示例</em></p>
+              
+            </div>
+          </div>
+          <div id="post-footer" class="post-footer main-content-wrap">
+            
+              
+                
+                
+                  <div class="post-footer-tags">
+                    <span class="text-color-light text-small">标签</span><br/>
+                    
+  <a class="tag tag--primary tag--small" href="https://milkp.github.io/tags/substance-designer/">Substance Designer</a>
+
+  <a class="tag tag--primary tag--small" href="https://milkp.github.io/tags/translation/">Translation</a>
+
+                  </div>
+                
+              
+            
+            
+  <div class="post-actions-wrap">
+      <nav >
+        <ul class="post-actions post-action-nav">
+          
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--disabled">
+              
+                  <i class="fa fa-angle-left"></i>
+                  <span class="hide-xs hide-sm text-small icon-ml">下一篇</span>
+                </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://milkp.github.io/2018/07/%E7%BF%BB%E8%AF%91life-of-a-triangle/" data-tooltip="[翻译]Life of a Triangle">
+              
+                  <span class="hide-xs hide-sm text-small icon-mr">上一篇</span>
+                  <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+          
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://milkp.github.io/2018/07/%E6%90%AC%E8%BF%90substance-lessons-for-beginners/">
+              <i class="fa fa-facebook-official"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://milkp.github.io/2018/07/%E6%90%AC%E8%BF%90substance-lessons-for-beginners/">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://milkp.github.io/2018/07/%E6%90%AC%E8%BF%90substance-lessons-for-beginners/">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          </li>
+        
+      
+      
+        <li class="post-action">
+          <a class="post-action-btn btn btn--default" href="#disqus_thread">
+            <i class="fa fa-comment-o"></i>
+          </a>
+        </li>
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+
+            
+              
+                <div id="disqus_thread">
+  <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+              
+            
+          </div>
+        </article>
+        <footer id="footer" class="main-content-wrap">
+  <span class="copyrights">
+    &copy; 2018 Wang Zuo. All Rights Reserved
+  </span>
+</footer>
+
+      </div>
+      <div id="bottom-bar" class="post-bottom-bar" data-behavior="4">
+        
+  <div class="post-actions-wrap">
+      <nav >
+        <ul class="post-actions post-action-nav">
+          
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--disabled">
+              
+                  <i class="fa fa-angle-left"></i>
+                  <span class="hide-xs hide-sm text-small icon-ml">下一篇</span>
+                </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://milkp.github.io/2018/07/%E7%BF%BB%E8%AF%91life-of-a-triangle/" data-tooltip="[翻译]Life of a Triangle">
+              
+                  <span class="hide-xs hide-sm text-small icon-mr">上一篇</span>
+                  <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+          
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://milkp.github.io/2018/07/%E6%90%AC%E8%BF%90substance-lessons-for-beginners/">
+              <i class="fa fa-facebook-official"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://milkp.github.io/2018/07/%E6%90%AC%E8%BF%90substance-lessons-for-beginners/">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://milkp.github.io/2018/07/%E6%90%AC%E8%BF%90substance-lessons-for-beginners/">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          </li>
+        
+      
+      
+        <li class="post-action">
+          <a class="post-action-btn btn btn--default" href="#disqus_thread">
+            <i class="fa fa-comment-o"></i>
+          </a>
+        </li>
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+
+      </div>
+      <div id="share-options-bar" class="share-options-bar" data-behavior="4">
+  <i id="btn-close-shareoptions" class="fa fa-close"></i>
+  <ul class="share-options">
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fmilkp.github.io%2F2018%2F07%2F%25E6%2590%25AC%25E8%25BF%2590substance-lessons-for-beginners%2F">
+          <i class="fa fa-facebook-official"></i><span>分享到 Facebook</span>
+        </a>
+      </li>
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2Fmilkp.github.io%2F2018%2F07%2F%25E6%2590%25AC%25E8%25BF%2590substance-lessons-for-beginners%2F">
+          <i class="fa fa-twitter"></i><span>分享到 Twitter</span>
+        </a>
+      </li>
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=https%3A%2F%2Fmilkp.github.io%2F2018%2F07%2F%25E6%2590%25AC%25E8%25BF%2590substance-lessons-for-beginners%2F">
+          <i class="fa fa-google-plus"></i><span>分享到 Google&#43;</span>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+<div id="share-options-mask" class="share-options-mask"></div>
+    </div>
+    
+    <div id="about">
+  <div id="about-card">
+    <div id="about-btn-close">
+      <i class="fa fa-remove"></i>
+    </div>
+    
+      <img id="about-card-picture" src="https://milkp.github.io/images/Avater.jpg" alt="作者的图片" />
+    
+    <h4 id="about-card-name">Wang Zuo</h4>
+    
+      <div id="about-card-bio">Still Naive, Still Simple</div>
+    
+    
+      <div id="about-card-job">
+        <i class="fa fa-briefcase"></i>
+        <br/>
+        Game | Tech | Art
+      </div>
+    
+    
+      <div id="about-card-location">
+        <i class="fa fa-map-marker"></i>
+        <br/>
+        ShangHai
+      </div>
+    
+  </div>
+</div>
+
+    <div id="algolia-search-modal" class="modal-container">
+  <div class="modal">
+    <div class="modal-header">
+      <span class="close-button"><i class="fa fa-close"></i></span>
+      <a href="https://algolia.com" target="_blank" rel="noopener" class="searchby-algolia text-color-light link-unstyled">
+        <span class="searchby-algolia-text text-color-light text-small">by</span>
+        <img class="searchby-algolia-logo" src="https://www.algolia.com/static_assets/images/press/downloads/algolia-light.svg">
+      </a>
+      <i class="search-icon fa fa-search"></i>
+      <form id="algolia-search-form">
+        <input type="text" id="algolia-search-input" name="search"
+          class="form-control input--large search-input" placeholder="搜索" />
+      </form>
+    </div>
+    <div class="modal-body">
+      <div class="no-result text-color-light text-center"></div>
+      <div class="results">
+        
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://milkp.github.io/2018/07/%E6%90%AC%E8%BF%90substance-lessons-for-beginners/">
+                <h3 class="media-heading">[搬运]Substance Lessons for Beginners</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jul 7, 2018
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>这是SD老鸟<a href="https://www.artstation.com/benkeeling/blog/OWGX/substance-lessons-for-beginners">Ben Keeling</a>发表在A站上的博文，文中点出的这几个问题其实不止初学者，一些熟手在制作材质过程中也会出现，所以觉得还是挺干货的，特此搬运。
+</p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://milkp.github.io/2018/07/%E7%BF%BB%E8%AF%91life-of-a-triangle/">
+                <h3 class="media-heading">[翻译]Life of a Triangle</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jul 7, 2018
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>核弹厂官方原文，将现代GPU Pipeline简单过了一遍，<a href="https://developer.nvidia.com/content/life-triangle-nvidias-logical-pipeline">英文原文</a>
+</p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+      </div>
+    </div>
+    <div class="modal-footer">
+      <p class="results-count text-medium"
+         data-message-zero=""
+         data-message-one=""
+         data-message-other="">
+         2 posts found
+      </p>
+    </div>
+  </div>
+</div>
+    
+  
+    
+    <div id="cover" style="background-image:url('https://milkp.github.io/images/cover1.jpg');"></div>
+  
+
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js" integrity="sha256-/BfiIkHlHoVihZdc6TFuj7MmJ0TWcWsMXkeDFwhi0zw=" crossorigin="anonymous"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.7/js/jquery.fancybox.min.js" integrity="sha256-GEAnjcTqVP+vBp3SSc8bEDQqvWAZMiHyUSIorrWwH50=" crossorigin="anonymous"></script>
+
+
+<script src="https://milkp.github.io/js/tranquilpeak.js"></script>
+
+
+
+<script>
+$(document).ready(function() {
+  hljs.configure({ classPrefix: '', useBR: false });
+  $('pre.code-highlight > code, pre > code').each(function(i, block) {
+    if (!$(this).hasClass('codeblock')) {
+      $(this).addClass('codeblock');
+    }
+    hljs.highlightBlock(block);
+  });
+});
+</script>
+
+
+  
+    
+      <script>
+        var disqus_config = function () {
+          this.page.url = 'https:\/\/milkp.github.io\/2018\/07\/%E6%90%AC%E8%BF%90substance-lessons-for-beginners\/';
+          
+            this.page.identifier = '\/2018\/07\/%E6%90%AC%E8%BF%90substance-lessons-for-beginners\/'
+          
+        };
+        (function() {
+          
+          
+          if (window.location.hostname == "localhost") {
+            return;
+          }
+          var d = document, s = d.createElement('script');
+          var disqus_shortname = 'blurry';
+          s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+
+          s.setAttribute('data-timestamp', +new Date());
+          (d.head || d.body).appendChild(s);
+        })();
+      </script>
+    
+  
+
+
+
+    
+  </body>
+</html>
+

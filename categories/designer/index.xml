@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Translation on Nothing but Tech&amp;Art</title>
-    <link>https://milkp.github.io/tags/translation/</link>
-    <description>Recent content in Translation on Nothing but Tech&amp;Art</description>
+    <title>Designer on Nothing but Tech&amp;Art</title>
+    <link>https://milkp.github.io/categories/designer/</link>
+    <description>Recent content in Designer on Nothing but Tech&amp;Art</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
     <lastBuildDate>Wed, 25 Jul 2018 23:27:24 +0800</lastBuildDate>
     
-	<atom:link href="https://milkp.github.io/tags/translation/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://milkp.github.io/categories/designer/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
@@ -18,16 +18,6 @@
       
       <guid>https://milkp.github.io/2018/07/%E6%90%AC%E8%BF%90substance-lessons-for-beginners/</guid>
       <description>&lt;p&gt;这是SD老鸟&lt;a href=&#34;https://www.artstation.com/benkeeling/blog/OWGX/substance-lessons-for-beginners&#34;&gt;Ben Keeling&lt;/a&gt;发表在A站上的博文，文中点出的这几个问题其实不止初学者，一些熟手在制作材质过程中也会出现，所以觉得还是挺干货的，特此搬运。
-&lt;/p&gt;</description>
-    </item>
-    
-    <item>
-      <title>[翻译]Life of a Triangle</title>
-      <link>https://milkp.github.io/2018/07/%E7%BF%BB%E8%AF%91life-of-a-triangle/</link>
-      <pubDate>Sun, 22 Jul 2018 21:13:05 +0800</pubDate>
-      
-      <guid>https://milkp.github.io/2018/07/%E7%BF%BB%E8%AF%91life-of-a-triangle/</guid>
-      <description>&lt;p&gt;核弹厂官方原文，将现代GPU Pipeline简单过了一遍，&lt;a href=&#34;https://developer.nvidia.com/content/life-triangle-nvidias-logical-pipeline&#34;&gt;英文原文&lt;/a&gt;
 &lt;/p&gt;</description>
     </item>
     
