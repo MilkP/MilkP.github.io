@@ -6,10 +6,21 @@
     <description>Recent content in Posts on Nothing but Tech&amp;Art</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Wed, 25 Jul 2018 23:27:24 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 20 Aug 2018 23:23:25 +0800</lastBuildDate>
     
 	<atom:link href="https://milkp.github.io/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>PBR百科翻译总结（一）</title>
+      <link>https://milkp.github.io/2018/08/pbr%E7%99%BE%E7%A7%91%E7%BF%BB%E8%AF%91%E6%80%BB%E7%BB%93%E4%B8%80/</link>
+      <pubDate>Mon, 20 Aug 2018 23:23:25 +0800</pubDate>
+      
+      <guid>https://milkp.github.io/2018/08/pbr%E7%99%BE%E7%A7%91%E7%BF%BB%E8%AF%91%E6%80%BB%E7%BB%93%E4%B8%80/</guid>
+      <description>&lt;p&gt;Polycount热心网友整理的PBR流程总结。原文太长，分几个部分来。  &lt;a href=&#34;https://polycount.com/discussion/136390/pbr-physically-based-rendering-bible/p1&#34;&gt;原帖&lt;/a&gt;
+&lt;a href=&#34;https://docs.google.com/document/d/1Fb9_KgCo0noxROKN4iT8ntTbx913e-t4Wc2nMRWPzNk/edit&#34;&gt;原文件Google Driver&lt;/a&gt;
+&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>[搬运]Substance Lessons for Beginners</title>

@@ -1,0 +1,800 @@
+
+
+  
+    
+  
+
+
+  
+
+
+
+
+
+  
+
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="generator" content="Hugo 0.41 with theme Tranquilpeak 0.4.3-BETA">
+    <title>PBR百科翻译总结（一）</title>
+    <meta name="author" content="Wang Zuo">
+    <meta name="keywords" content="tech">
+
+    <link rel="icon" href="https://milkp.github.io/favicon.png">
+    
+
+    
+    <meta name="description" content="Polycount热心网友整理的PBR流程总结。原文太长，分几个部分来。  原帖
+原文件Google Driver
+">
+    <meta property="og:description" content="Polycount热心网友整理的PBR流程总结。原文太长，分几个部分来。  原帖
+原文件Google Driver
+">
+    <meta property="og:type" content="blog">
+    <meta property="og:title" content="PBR百科翻译总结（一）">
+    <meta property="og:url" content="/2018/08/pbr%E7%99%BE%E7%A7%91%E7%BF%BB%E8%AF%91%E6%80%BB%E7%BB%93%E4%B8%80/">
+    <meta property="og:site_name" content="Nothing but Tech&amp;Art">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Nothing but Tech&amp;Art">
+    <meta name="twitter:description" content="Polycount热心网友整理的PBR流程总结。原文太长，分几个部分来。  原帖
+原文件Google Driver
+">
+    
+    
+
+    
+    
+
+    
+      <meta property="og:image" content="https://milkp.github.io/images/Avater.jpg">
+    
+
+    
+    
+      <meta property="og:image" content="http://wx2.sinaimg.cn/large/66586248gy1fugiilek5mj20zk0dc48j.jpg">
+    
+    
+
+    
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/jquery.fancybox.min.css" integrity="sha256-vuXZ9LGmmwtjqFX1F+EKin1ThZMub58gKULUyf0qECk=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/helpers/jquery.fancybox-thumbs.min.css" integrity="sha256-SEa4XYAHihTcEP1f5gARTB2K26Uk8PsndQYHQC1f4jU=" crossorigin="anonymous" />
+    
+    
+    <link rel="stylesheet" href="https://milkp.github.io/css/tranquilpeak.css" />
+    
+    
+
+    
+      
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-122872223-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+
+    
+    
+  </head>
+
+  <body>
+    <div id="blog">
+      <header id="header" data-behavior="4">
+  <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+  <div class="header-title">
+    <a class="header-title-link" href="https://milkp.github.io/">Nothing but Tech&amp;Art</a>
+  </div>
+  
+    
+      <a class="header-right-picture "
+         href="https://milkp.github.io/#about">
+    
+    
+    
+      
+        <img class="header-picture" src="https://milkp.github.io/images/Avater.jpg" alt="作者的图片" />
+      
+    
+    </a>
+  
+</header>
+
+      <nav id="sidebar" data-behavior="4">
+  <div class="sidebar-container">
+    
+      <div class="sidebar-profile">
+        <a href="https://milkp.github.io/#about">
+          <img class="sidebar-profile-picture" src="https://milkp.github.io/images/Avater.jpg" alt="作者的图片" />
+        </a>
+        <h4 class="sidebar-profile-name">Wang Zuo</h4>
+        
+          <h5 class="sidebar-profile-bio">Still Naive, Still Simple</h5>
+        
+      </div>
+    
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://milkp.github.io/">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-home"></i>
+      
+      <span class="sidebar-button-desc">首页</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://milkp.github.io/categories">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-bookmark"></i>
+      
+      <span class="sidebar-button-desc">分类</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://milkp.github.io/tags">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-tags"></i>
+      
+      <span class="sidebar-button-desc">标签</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://milkp.github.io/archives">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-archive"></i>
+      
+      <span class="sidebar-button-desc">归档</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://milkp.github.io/#about">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-question"></i>
+      
+      <span class="sidebar-button-desc">关于</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+
+    </ul>
+  </div>
+</nav>
+
+      
+  <div class="post-header-cover
+              text-center
+              post-header-cover--partial"
+       style="background-image:url('http://wx2.sinaimg.cn/large/66586248gy1fugiilek5mj20zk0dc48j.jpg')"
+       data-behavior="4">
+    
+  </div>
+
+
+      <div id="main" data-behavior="4"
+        class="hasCover
+               hasCoverMetaOut
+               ">
+        <article class="post" itemscope itemType="http://schema.org/BlogPosting">
+          
+          
+            <div class="post-header main-content-wrap text-center">
+  
+    <h1 class="post-title" itemprop="headline">
+      PBR百科翻译总结（一）
+    </h1>
+  
+  
+  <div class="postShorten-meta post-meta">
+    
+      <time itemprop="datePublished" datetime="2018-08-20T23:23:25&#43;08:00">
+        
+  八月 20, 2018
+
+      </time>
+    
+    
+  
+  
+    <span>发布在</span>
+    
+      <a class="category-link" href="https://milkp.github.io/categories/rendering">Rendering</a>
+    
+  
+
+  </div>
+
+</div>
+          
+          <div class="post-content markdown" itemprop="articleBody">
+            <div class="main-content-wrap">
+              <p>Polycount热心网友整理的PBR流程总结。原文太长，分几个部分来。  <a href="https://polycount.com/discussion/136390/pbr-physically-based-rendering-bible/p1">原帖</a>
+<a href="https://docs.google.com/document/d/1Fb9_KgCo0noxROKN4iT8ntTbx913e-t4Wc2nMRWPzNk/edit">原文件Google Driver</a>
+</p>
+
+<h1 id="light-interaction-really-sciencey-stuff">Light Interaction &amp; Really Sciencey Stuff</h1>
+
+<p>文章中并不会出现关于光照处理的复杂公式，而是会结合一些类型的材质来阐述基本原理。这样更容易理解如何得到真实的结果的过程。</p>
+
+<h2 id="diffuse-and-specular-reflectance">Diffuse and Specular Reflectance</h2>
+
+<p>光线投射到物体表面后会分为两个方向：一些被直接反射，另一些会发生折射并进入到物体内部。发生折射的部分可能会被物体吸收，或者在表面下扩散后以略微不同的方向射出。</p>
+
+<p>发生反射的光线被作为Specular Reflectance(镜面反射)来处理。发生折射的则作为Diffuse Reflectance（漫反射）处理。</p>
+
+<p>反射和折射的光量取决于光线与平面的角度。处于掠角时，直接反射的光线（specular）变高，直到达到极限的100%，这就是Fresnel现象。</p>
+
+<h2 id="material-types">Material Types</h2>
+
+<p>本质上与渲染相关的物质只有两类：
+- 金属（铁，金，铜等导体）
+- 非金属（介电材料等：塑料，石材，木材，皮肤，玻璃等）。</p>
+
+<p>两者都具有关于漫反射和镜面反射的特殊特性：</p>
+
+<ul>
+<li><p>金属没有漫反射。 所以金属应具有黑色的漫反射颜色。 所有可见光都直接从表面反射（镜面反射）。不同类型的金属具有不同的的镜面颜色。
+金属实际上既没有折射也没有吸收任何光线，金属非常致密，以至于光线实际上无法进入表面，这就是所有光线都被反射的原因。</p></li>
+
+<li><p>与金属相比，非金属具有漫反射，但是镜面反射比金属更弱且变化更小。 非金属的镜面反射率是单色（没有颜色，只有灰色）。 大多数非金属仅反射一小部分光作为镜面反射，大多数材料在2％和5％之间。</p></li>
+</ul>
+
+<h2 id="energy-conservation">Energy Conservation</h2>
+
+<p>第一：反射（Reflection）和漫反射（diffusion）互相排斥。根据能量守恒定律，出射光量不能大于入射光量。着色系统中可以先强制减掉反射光量再进行漫反射着色。因此高反射物件会显示出微弱甚至是0的漫反射光，因为大部分都被反射了。如果物体有明亮的漫反射，则反射就很微弱。<br />
+<img src="http://wx3.sinaimg.cn/large/66586248gy1fugitgore1j20oh06x0wr.jpg" alt="" /></p>
+
+<p>能量守恒十分重要，它可以保证Artist在不破坏物理法则的情况下工作，并且提供了一些规则来防范制作的美术资源在不同的光照条件下可能出现糟糕的结果。</p>
+
+<p>第二：如果能量守恒，则粗糙表面上应该出现大而柔和的高光，光滑表面上则是小而锐利的高光。这种明亮度的差异就是关键，当反射同样的光时，粗糙表面会将其向不同方向扩散开，而光滑表面则是将其聚拢：<br />
+<img src="http://wx4.sinaimg.cn/large/66586248gy1fugith1fkrj20nz06tadl.jpg" alt="" /><br />
+以上两点是所有physically-based渲染器都需要实现的点。</p>
+
+<h2 id="linear-space-lighting-gamma">Linear-Space Lighting &amp; Gamma​​</h2>
+
+<p><img src="http://wx1.sinaimg.cn/large/66586248gy1fugithg54oj20u60bcqa2.jpg" alt="" /><br />
+伽马颜色空间为0 - 255.中性灰/ 50％为187，而不是127（128）。
+显示器默认的gamma为2.2
+<strong>Gamma and Their Effect on Electronics</strong>
+硬件上存储的图像为上弯曲线，比真实的更加明亮和柔和。gamma <sup>1</sup>&frasl;<sub>2</sub>.2
+显示器gamma为下弯曲线。gamma 2.2
+<sup>1</sup>&frasl;<sub>2</sub>.2称为编码伽马值，使用该值矫正的操作为挑高曲线，等同于Linear-&gt;sRGB，称为伽马压缩。
+2.2为称为解码伽马值，使用该值矫正的操作为将上弯曲线拉回线性，等同于sRGB-&gt;Linear，称为伽马展开。
+以上两个操作都可以称为gamma矫正。
+两者结合后为最终显示为直线，符合真实效果。gamma 1.0<br />
+<img src="http://wx3.sinaimg.cn/large/66586248gy1fugiths9a1j20ai0aidgt.jpg" alt="" /><br />
+在游戏贴图处理中，由于存储贴图一般为是sRGB，即上弯曲线，直接进行光照计算的话结果并不准确。最好能进行以下步骤：贴图-&gt;gamma 2.2矫正转换至Linear空间，即gamma 1.0，曲线拉直-&gt;进行光照计算-&gt;通过shader将计算结果通过gamma <sup>1</sup>&frasl;<sub>2</sub>.2转换回sRGB，挑高曲线-&gt;最后显示器自身的gamma 2.2矫正后显示正确结果。（来自顽皮狗的演讲）<br />
+<img src="http://wx2.sinaimg.cn/large/66586248gy1fugitje8cmj215e0b915p.jpg" alt="" /></p>
+
+<p>当然这只是正确结果。事实上可以自由的控制gamma值来达到想要的整体效果。</p>
+
+<h1 id="pbr-the-definition-more">PBR: The Definition &amp; More</h1>
+
+<p>PBR其实是指用逼真的着色/光照模型以及测量得到的表面值来准确表现真实世界的材质。比起严格的一整套规则，PBR更像是一个概念，因此PBR系统的各种具体实现往往各不相同。</p>
+
+<h2 id="new-vs-old">New VS Old</h2>
+
+<p>新旧渲染模型的主要区别就是Specular的用处。虽然以往会用specular mask表示不同材质表面的高光强度，但是现在Specular color是一个根据材质类型区分的固定值。要得到高光变化现在需要使用Gloss/Reflection map。Gloss比 Specular更加强大，不仅影响高光亮度，还影响对环境反射的大小和锐利度。</p>
+
+<p>要注意每个引擎/Shader都会以不同的方式呈现物理世界，特别是光照。UE4中的属性值/贴图可能就会区别于CryEngine或者八猴等。</p>
+
+<h2 id="what-is-pbr-or-sometimes-refered-to-as-pbs-or-brdf">What is PBR or sometimes refered to as PBS or BRDF</h2>
+
+<p>PBR/PBS/BRDF的最简单解释就是一段描述表面如何对光照做出反应的Shader代码。通常来说需要计算Specular和Diffuse。他们是对真实世界中表面对光照做出的反应的数学近似。但是在计算机图形学中我们还是有所限制，因此这个数学近似的效率十分重要。像Blinn, Phong之类的BRDF就十分效率和直观，但是效率也限制了他们的最终效果的准确性。如果我们能更加关注一下耗能更高的模型，就会发现第二层着色模型：Oren-Nayar, Cook-Torrance, Askikhmin-Shirley等等。</p>
+
+<p>不存在万能的PBR模型，Cook-Torrance效果较为接近真实的BRDF数据，但是消耗也十分昂贵。针对目标平台选取相应的BRDF模型很重要。</p>
+
+<h2 id="basic-theory-of-physically-based-rendering">Basic Theory of Physically-Based Rendering​​</h2>
+
+<p>PBR与之前的渲染模型的最大区别在于更为细致地对光与表面之间相互影响行为进行论证。</p>
+
+<h3 id="dielectric-and-metallic-materials">Dielectric and Metallic Materials​​</h3>
+
+<p>真实世界中的物质可以分为：绝缘体，半导体和导体。
+游戏开发中一般只对绝缘体（Insulators，Dielectric materials）和导体（Metallic materials）感兴趣。</p>
+
+<h3 id="diffusion-reflection">Diffusion &amp; Reflection</h3>
+
+<p>Diffusion和Reflection，也称为“Diffuse”与Specular”，两个最基本的用于区分光/表面互动形式的项。多数人比较熟悉他们的应用，但是却并不十分清楚他们在物理理论上是如何区分的。</p>
+
+<p><strong>Reflection/Specular</strong><br />
+光照射到表面，发生反射—其实就是反弹，从入射方向以法线对称方向离开表面，过程就像球体从相反角度弹出。在光滑表面上这会产生一个类似于镜子的效果。Specular这个用来形容这个效果的词其实就脱胎于拉丁文的镜子（Speculum）一词。</p>
+
+<p><strong>Specular Colour​</strong><br />
+这个值就是F(0)，表示角度为0时Fresnel反射值。
+比较合理的绝缘材料的Specular Color值的取值范围为：
+- 不得低于0.02
+- 普通宝石为0.05-0.17
+- 普通液体为0.02-0.04
+- 如果没有找到类似的参考值则设置为0.04（塑料）
+除了宝石，其他绝缘体都应该处于0.02-0.05之间，<a href="https://seblagarde.wordpress.com/2011/08/17/feeding-a-physical-based-lighting-mode/">更多信息</a></p>
+
+<p>金属的Specular基本就等于日常所见的颜色，规则是设置为0.5以上。</p>
+
+<p><strong>Diffuse/Albedo</strong><br />
+一部分光被表面吸收后转化为热能或者在内部散射。一部分光线会在散射后再次从表面射出，对光的这种吸收和散射的现象被称为Diffuse Light, Diffusion, Subsurface Scattering等等。</p>
+
+<p>对于不同波长的光线，吸收和散射的形式也不一样，这也是赋予物体色彩的原因。比如物体吸收了大部分光但是散射了蓝色光，那么物体就显示蓝色。</p>
+
+<p>由于漫反射从所有角度看都几乎一致，跟Specular完全不一样，所以Shader只需要一个输入来表达它：Albedo，一个用来描述会从表面下散射出来的不同的光的颜色值。Diffuse Color是一个常用的同义词。</p>
+
+<p><strong>Diffuse Colour</strong><br />
+在过去的流程中通常需要将模拟的例如Shadow，Reflection, Specular等光照效果直接bake到（绘制到）Diffuse Map上。而在目前的流程中，这些效果不能直接添加在Diffuse上了，目前流程中的Diffuse Color定义就是：100%亮度的白光照射下这个表面的明亮程度。
+用于定义这个表面属性的光源则是一个平行于表面法线，色彩等同于一个白色兰伯特表面的光源。这等于说在引擎中赋予一个亮度为1的光源并照射给一个贴了贴图的平面，那么得到引擎中显示的贴图的颜色就和PS中的（原本的贴图颜色）一致，不过请注意postprocess的影响。</p>
+
+<p>真实世界中最黑的物质之一是煤炭，最亮的物质是新降的雪。</p>
+
+<h3 id="translucency-transparency">Translucency &amp; Transparency</h3>
+
+<p>在有更宽散射距离的材料中，例如皮肤或蜡，不会使用简单的颜色。着色系统必须考虑被照亮物体的形状和厚度。如果足够薄，通常会看到光散射到背面，那么就可以称为半透明。
+如果扩散甚至更低（例如玻璃），几乎没有明显的散射，并且整个图像可以完整地从一侧穿过物体到另一侧，这时就需要使用特殊的着色器来模拟它们。</p>
+
+<h3 id="metals">Metals</h3>
+
+<p>金属往往比绝缘体更具反射性。 导体通常表现出高达60-90％的反射率，绝缘体则通常低得多，在0-20％的范围内。 高反射率防止大多数光线进入内部并散射，使金属具有非常“闪亮”的外观。</p>
+
+<p>其次反射光的有时会出现在可见光谱内的变化，形成了有颜色的反射。这种反射比较少见但是一些日常材料上会出现，如金，铜和黄铜。与之对应绝缘体的反射是无色的。
+最后，金属会吸收并未被反射的光而不是像绝缘体那样在内部发生散射。因此金属本质上不存在diffuse light。然和实际情况中会有少许的表面氧化物之类的会发生散射。</p>
+
+<p>金属与非金属之间的这种差异使得一些渲染系统采用了一个metalness的输入。Artist指定材质与金属相似的具体程度，而不是仅仅只是明确指定Albedo和Reflectivity。有时这是一个更加简便的创建材质的方式，但并非精确地符合真实的PBR理论。</p>
+
+<h3 id="fresnel">Fresnel</h3>
+
+<p>Fresnel(菲涅尔)指表面在掠角处反射光的百分比。在掠射角上落在表面上的光比直接表面的光更可能反射。所以有正确的菲涅耳效果渲染的对象在边缘看起来会有更明亮的反射。虽然它在计算机图形学中的存在并不新鲜了，然而PBR系统的着色器在处理菲涅耳方程时还是进行了一些重要的修正：</p>
+
+<p>首先，对于所有材料，反射率在掠角处拉满—任何光滑物体的“边缘”应该等同于完美（无色）镜子，无论材料如何。只要它是光滑的并且以适当的角度查看，任何物质都可以作为完美的镜子！这可能违反直觉，但在物理学上是很明确地。（类似于在极端角度看起来像水/波浪镜的沥青）</p>
+
+<p>关于菲涅耳特性的第二个特性是随着观察角度变化的的曲线的区别在不同材料之间变化不大。金属比较不同，但也可以通过分析来解释。</p>
+
+<p><img src="http://wx4.sinaimg.cn/large/66586248gy1fugiti8qt4j20im0a5jtr.jpg" alt="" /></p>
+
+<p>目前的着色系统可以在内部处理菲涅尔效应，只需要获取一些其他预先处理好的材质属性，比如Gloss和Reflectivity。</p>
+
+<p>PBR工作流程让Artist通过一种方式指定“基本反射率（base reflectivity）”。这提供了反射光的最小量和颜色。菲涅耳效果一旦渲染，将在Artist指定的值之上增加反射率以使掠射角度处达到100％（白色）。</p>
+
+<p>有个重要的提醒是当表面表的不那么光滑时菲涅尔效果也会迅速地变得不那么明显。</p>
+
+<p>菲涅尔通常应该设置成为1（在metalness reflectivity模块中应该被锁定为1），再根据Gloss Map来计算更亮或者更暗的菲涅尔效果。</p>
+
+<p>一般来说菲涅尔通过Blinn-Phong或者GGX的BRDF来模拟，不需要额外的输入。但是对于Blinn-Phong来说可以添加额外的控制项来使其应用于传统的非PBR流程。</p>
+
+<h3 id="microsurface-roughness-gloss">Microsurface (Roughness/Gloss)</h3>
+
+<p>大多数真实世界的材质表面都有十分微小的凹陷、裂缝、凸起等肉眼无法观察的细节，也无法通过通常分辨率的normal map来表现。然而这些围观特征会影响光的漫反射和反射。</p>
+
+<p><img src="http://wx4.sinaimg.cn/large/66586248gy1fugitik2hgj20ca076js3.jpg" alt="" /></p>
+
+<p>微表面对反射有最显着的影响（次表面散射（diffusion）不会受到很大影响）。在上图中，入射光的平行线在从较粗糙的表面反射时开始发散，因为每条光线撞击的微观表面的方向都不一致。因此表面越粗糙，反射光就会发散得越多或看起来越“模糊”。</p>
+
+<p>不过在开发中，如果直接使用硬件计算用于着色的微表面特征并不现实。因此如果我们放弃直接描述微表面细节，而是指定一个总的粗糙度度量值，就可以编写相当准确的着色器来产生类似的结果。该度量值通常被称为“Gloss”，“Smoothness”或“Roughness”。它可以指定为纹理或给定材料的常量。</p>
+
+<p>微表面光泽度直接影响反射亮度。意味着Artist可以直接在Gloss Map中绘制细节变化，而PBR渲染系统不仅会根据其改变反射形状的变化，也会改变其强度而不需要改变Specular Mask/Reflectivity。</p>
+
+<p>这一点很重要，因为互相关联的两个真实世界量—微表面细节和反射率—现在首次在美术生成和渲染过程中正确地绑定在了一起。这很像前面描述的扩散/反射平衡的操作：我们可以独立地创作两个值，但由于它们本质上是互相关联的，因此各自处理它们变得更加困难。</p>
+
+<p>此外，对现实世界材料的研究表明各材料反射率值变化不大。一个很好的例子是水和泥：两者反射率相近，但由于泥很粗糙，水表面则很光滑，所以它们的反射看起来非常不同。在PBR系统中创建这种场景地Artist主要通过GlossMap或RoughnessMap来表现区别而不是调整反射率，如下图所示。</p>
+
+<p><img src="http://wx3.sinaimg.cn/large/66586248gy1fugitiyh8aj20ir0aztjm.jpg" alt="" /></p>
+
+<p>微表面对反射还有其他微妙的影响。例如，菲涅尔效应随着表面粗糙而略微减弱（粗糙表面的混乱性质会使菲涅耳效应的地方发生散射，阻止观察者能够清楚地观察到）。</p>
+
+<p>此外，较大或凹陷的微表面可以“捕获”光，使其多次反射到表面导致更多的光被吸收并降低亮度。不同的渲染系统以不同的方式和程度处理这些细节，但粗糙表面表现更暗的大方向是相同的。</p>
+
+<p>这个章节只是提供了一个非常基本的关于PBR世界的介绍，之后也不会继续深入讲解数学物理等基本原理，而是会提供一些参考资料。不过在阅读本章之后对PBR的了解应该已经足够继续学习接下来的章节。</p>
+
+<p>附加Gloss信息：</p>
+
+<p>按照我的观点，Gloss是最难创建的贴图。理由如下：
+- 由Gloss值可以得到什么样的Specular范围值完全取决于引擎
+- Gloss包含了许多细节，也会影响到所有的map
+- 它的值是数字，而不是颜色或者向量</p>
+
+<p>像划痕，毛孔，凹槽等细节，在没有normal的情况下也可以表现出来。这也是为什么Gloss Map被称为microsurface的原因。</p>
+              
+            </div>
+          </div>
+          <div id="post-footer" class="post-footer main-content-wrap">
+            
+              
+                
+                
+                  <div class="post-footer-tags">
+                    <span class="text-color-light text-small">标签</span><br/>
+                    
+  <a class="tag tag--primary tag--small" href="https://milkp.github.io/tags/pbr/">PBR</a>
+
+                  </div>
+                
+              
+            
+            
+  <div class="post-actions-wrap">
+      <nav >
+        <ul class="post-actions post-action-nav">
+          
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--disabled">
+              
+                  <i class="fa fa-angle-left"></i>
+                  <span class="hide-xs hide-sm text-small icon-ml">下一篇</span>
+                </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://milkp.github.io/2018/07/%E6%90%AC%E8%BF%90substance-lessons-for-beginners/" data-tooltip="[搬运]Substance Lessons for Beginners">
+              
+                  <span class="hide-xs hide-sm text-small icon-mr">上一篇</span>
+                  <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+          
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://milkp.github.io/2018/08/pbr%E7%99%BE%E7%A7%91%E7%BF%BB%E8%AF%91%E6%80%BB%E7%BB%93%E4%B8%80/">
+              <i class="fa fa-facebook-official"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://milkp.github.io/2018/08/pbr%E7%99%BE%E7%A7%91%E7%BF%BB%E8%AF%91%E6%80%BB%E7%BB%93%E4%B8%80/">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://milkp.github.io/2018/08/pbr%E7%99%BE%E7%A7%91%E7%BF%BB%E8%AF%91%E6%80%BB%E7%BB%93%E4%B8%80/">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          </li>
+        
+      
+      
+        <li class="post-action">
+          <a class="post-action-btn btn btn--default" href="#disqus_thread">
+            <i class="fa fa-comment-o"></i>
+          </a>
+        </li>
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+
+            
+              
+                <div id="disqus_thread">
+  <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+              
+            
+          </div>
+        </article>
+        <footer id="footer" class="main-content-wrap">
+  <span class="copyrights">
+    &copy; 2018 Wang Zuo. All Rights Reserved
+  </span>
+</footer>
+
+      </div>
+      <div id="bottom-bar" class="post-bottom-bar" data-behavior="4">
+        
+  <div class="post-actions-wrap">
+      <nav >
+        <ul class="post-actions post-action-nav">
+          
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--disabled">
+              
+                  <i class="fa fa-angle-left"></i>
+                  <span class="hide-xs hide-sm text-small icon-ml">下一篇</span>
+                </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://milkp.github.io/2018/07/%E6%90%AC%E8%BF%90substance-lessons-for-beginners/" data-tooltip="[搬运]Substance Lessons for Beginners">
+              
+                  <span class="hide-xs hide-sm text-small icon-mr">上一篇</span>
+                  <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+          
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://milkp.github.io/2018/08/pbr%E7%99%BE%E7%A7%91%E7%BF%BB%E8%AF%91%E6%80%BB%E7%BB%93%E4%B8%80/">
+              <i class="fa fa-facebook-official"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://milkp.github.io/2018/08/pbr%E7%99%BE%E7%A7%91%E7%BF%BB%E8%AF%91%E6%80%BB%E7%BB%93%E4%B8%80/">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://milkp.github.io/2018/08/pbr%E7%99%BE%E7%A7%91%E7%BF%BB%E8%AF%91%E6%80%BB%E7%BB%93%E4%B8%80/">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          </li>
+        
+      
+      
+        <li class="post-action">
+          <a class="post-action-btn btn btn--default" href="#disqus_thread">
+            <i class="fa fa-comment-o"></i>
+          </a>
+        </li>
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+
+      </div>
+      <div id="share-options-bar" class="share-options-bar" data-behavior="4">
+  <i id="btn-close-shareoptions" class="fa fa-close"></i>
+  <ul class="share-options">
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fmilkp.github.io%2F2018%2F08%2Fpbr%25E7%2599%25BE%25E7%25A7%2591%25E7%25BF%25BB%25E8%25AF%2591%25E6%2580%25BB%25E7%25BB%2593%25E4%25B8%2580%2F">
+          <i class="fa fa-facebook-official"></i><span>分享到 Facebook</span>
+        </a>
+      </li>
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2Fmilkp.github.io%2F2018%2F08%2Fpbr%25E7%2599%25BE%25E7%25A7%2591%25E7%25BF%25BB%25E8%25AF%2591%25E6%2580%25BB%25E7%25BB%2593%25E4%25B8%2580%2F">
+          <i class="fa fa-twitter"></i><span>分享到 Twitter</span>
+        </a>
+      </li>
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=https%3A%2F%2Fmilkp.github.io%2F2018%2F08%2Fpbr%25E7%2599%25BE%25E7%25A7%2591%25E7%25BF%25BB%25E8%25AF%2591%25E6%2580%25BB%25E7%25BB%2593%25E4%25B8%2580%2F">
+          <i class="fa fa-google-plus"></i><span>分享到 Google&#43;</span>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+<div id="share-options-mask" class="share-options-mask"></div>
+    </div>
+    
+    <div id="about">
+  <div id="about-card">
+    <div id="about-btn-close">
+      <i class="fa fa-remove"></i>
+    </div>
+    
+      <img id="about-card-picture" src="https://milkp.github.io/images/Avater.jpg" alt="作者的图片" />
+    
+    <h4 id="about-card-name">Wang Zuo</h4>
+    
+      <div id="about-card-bio">Still Naive, Still Simple</div>
+    
+    
+      <div id="about-card-job">
+        <i class="fa fa-briefcase"></i>
+        <br/>
+        Game | Tech | Art
+      </div>
+    
+    
+      <div id="about-card-location">
+        <i class="fa fa-map-marker"></i>
+        <br/>
+        ShangHai
+      </div>
+    
+  </div>
+</div>
+
+    <div id="algolia-search-modal" class="modal-container">
+  <div class="modal">
+    <div class="modal-header">
+      <span class="close-button"><i class="fa fa-close"></i></span>
+      <a href="https://algolia.com" target="_blank" rel="noopener" class="searchby-algolia text-color-light link-unstyled">
+        <span class="searchby-algolia-text text-color-light text-small">by</span>
+        <img class="searchby-algolia-logo" src="https://www.algolia.com/static_assets/images/press/downloads/algolia-light.svg">
+      </a>
+      <i class="search-icon fa fa-search"></i>
+      <form id="algolia-search-form">
+        <input type="text" id="algolia-search-input" name="search"
+          class="form-control input--large search-input" placeholder="搜索" />
+      </form>
+    </div>
+    <div class="modal-body">
+      <div class="no-result text-color-light text-center"></div>
+      <div class="results">
+        
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://milkp.github.io/2018/08/pbr%E7%99%BE%E7%A7%91%E7%BF%BB%E8%AF%91%E6%80%BB%E7%BB%93%E4%B8%80/">
+                <h3 class="media-heading">PBR百科翻译总结（一）</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Aug 8, 2018
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>Polycount热心网友整理的PBR流程总结。原文太长，分几个部分来。  <a href="https://polycount.com/discussion/136390/pbr-physically-based-rendering-bible/p1">原帖</a>
+<a href="https://docs.google.com/document/d/1Fb9_KgCo0noxROKN4iT8ntTbx913e-t4Wc2nMRWPzNk/edit">原文件Google Driver</a>
+</p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://milkp.github.io/2018/07/%E6%90%AC%E8%BF%90substance-lessons-for-beginners/">
+                <h3 class="media-heading">[搬运]Substance Lessons for Beginners</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jul 7, 2018
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>这是SD老鸟<a href="https://www.artstation.com/benkeeling/blog/OWGX/substance-lessons-for-beginners">Ben Keeling</a>发表在A站上的博文，文中点出的这几个问题其实不止初学者，一些熟手在制作材质过程中也会出现，所以觉得还是挺干货的，特此搬运。
+</p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://milkp.github.io/2018/07/%E7%BF%BB%E8%AF%91life-of-a-triangle/">
+                <h3 class="media-heading">[翻译]Life of a Triangle</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jul 7, 2018
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>核弹厂官方原文，将现代GPU Pipeline简单过了一遍，<a href="https://developer.nvidia.com/content/life-triangle-nvidias-logical-pipeline">英文原文</a>
+</p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+      </div>
+    </div>
+    <div class="modal-footer">
+      <p class="results-count text-medium"
+         data-message-zero=""
+         data-message-one=""
+         data-message-other="">
+         3 posts found
+      </p>
+    </div>
+  </div>
+</div>
+    
+  
+    
+    <div id="cover" style="background-image:url('https://milkp.github.io/images/cover1.jpg');"></div>
+  
+
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js" integrity="sha256-/BfiIkHlHoVihZdc6TFuj7MmJ0TWcWsMXkeDFwhi0zw=" crossorigin="anonymous"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.7/js/jquery.fancybox.min.js" integrity="sha256-GEAnjcTqVP+vBp3SSc8bEDQqvWAZMiHyUSIorrWwH50=" crossorigin="anonymous"></script>
+
+
+<script src="https://milkp.github.io/js/tranquilpeak.js"></script>
+
+
+
+<script>
+$(document).ready(function() {
+  hljs.configure({ classPrefix: '', useBR: false });
+  $('pre.code-highlight > code, pre > code').each(function(i, block) {
+    if (!$(this).hasClass('codeblock')) {
+      $(this).addClass('codeblock');
+    }
+    hljs.highlightBlock(block);
+  });
+});
+</script>
+
+
+  
+    
+      <script>
+        var disqus_config = function () {
+          this.page.url = 'https:\/\/milkp.github.io\/2018\/08\/pbr%E7%99%BE%E7%A7%91%E7%BF%BB%E8%AF%91%E6%80%BB%E7%BB%93%E4%B8%80\/';
+          
+            this.page.identifier = '\/2018\/08\/pbr%E7%99%BE%E7%A7%91%E7%BF%BB%E8%AF%91%E6%80%BB%E7%BB%93%E4%B8%80\/'
+          
+        };
+        (function() {
+          
+          
+          if (window.location.hostname == "localhost") {
+            return;
+          }
+          var d = document, s = d.createElement('script');
+          var disqus_shortname = 'blurry';
+          s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+
+          s.setAttribute('data-timestamp', +new Date());
+          (d.head || d.body).appendChild(s);
+        })();
+      </script>
+    
+  
+
+
+
+    
+  </body>
+</html>
+
