@@ -283,15 +283,22 @@ if (!doNotTrack) {
 
 <p><img src="http://wx1.sinaimg.cn/large/66586248gy1fugithg54oj20u60bcqa2.jpg" alt="" /><br />
 伽马颜色空间为0 - 255.中性灰/ 50％为187，而不是127（128）。
-显示器默认的gamma为2.2
-<strong>Gamma and Their Effect on Electronics</strong>
-硬件上存储的图像为上弯曲线，比真实的更加明亮和柔和。gamma <sup>1</sup>&frasl;<sub>2</sub>.2
-显示器gamma为下弯曲线。gamma 2.2
-<sup>1</sup>&frasl;<sub>2</sub>.2称为编码伽马值，使用该值矫正的操作为挑高曲线，等同于Linear-&gt;sRGB，称为伽马压缩。
-2.2为称为解码伽马值，使用该值矫正的操作为将上弯曲线拉回线性，等同于sRGB-&gt;Linear，称为伽马展开。
+显示器默认的gamma为2.2</p>
+
+<p><strong>Gamma and Their Effect on Electronics</strong></p>
+
+<p>硬件上存储的图像为上弯曲线，比真实的更加明亮和柔和：gamma <sup>1</sup>&frasl;<sub>2</sub>.2</p>
+
+<p>显示器gamma为下弯曲线：gamma 2.2</p>
+
+<ul>
+<li><sup>1</sup>&frasl;<sub>2</sub>.2称为编码伽马值，使用该值矫正的操作为挑高曲线，等同于Linear-&gt;sRGB，称为伽马压缩。</li>
+<li>2.2为称为解码伽马值，使用该值矫正的操作为将上弯曲线拉回线性，等同于sRGB-&gt;Linear，称为伽马展开。
 以上两个操作都可以称为gamma矫正。
-两者结合后为最终显示为直线，符合真实效果。gamma 1.0<br />
-<img src="http://wx3.sinaimg.cn/large/66586248gy1fugiths9a1j20ai0aidgt.jpg" alt="" /><br />
+两者结合后为最终显示为直线，符合真实效果。gamma 1.0<br /></li>
+</ul>
+
+<p><img src="http://wx3.sinaimg.cn/large/66586248gy1fugiths9a1j20ai0aidgt.jpg" alt="" /><br />
 在游戏贴图处理中，由于存储贴图一般为是sRGB，即上弯曲线，直接进行光照计算的话结果并不准确。最好能进行以下步骤：贴图-&gt;gamma 2.2矫正转换至Linear空间，即gamma 1.0，曲线拉直-&gt;进行光照计算-&gt;通过shader将计算结果通过gamma <sup>1</sup>&frasl;<sub>2</sub>.2转换回sRGB，挑高曲线-&gt;最后显示器自身的gamma 2.2矫正后显示正确结果。（来自顽皮狗的演讲）<br />
 <img src="http://wx2.sinaimg.cn/large/66586248gy1fugitje8cmj215e0b915p.jpg" alt="" /></p>
 
