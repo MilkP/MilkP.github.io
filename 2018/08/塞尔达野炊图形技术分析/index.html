@@ -1,0 +1,959 @@
+
+
+  
+    
+  
+
+
+  
+
+
+
+
+
+  
+
+<!DOCTYPE html>
+<html lang="zh-cn">
+  <head>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="generator" content="Hugo 0.41 with theme Tranquilpeak 0.4.3-BETA">
+    <title>塞尔达野炊图形技术分析</title>
+    <meta name="author" content="Wang Zuo">
+    <meta name="keywords" content="">
+
+    <link rel="icon" href="https://milkp.github.io/favicon.png">
+    
+
+    
+    <meta name="description" content="一篇关于塞尔达野炊的图形技术分析。解析了不少技术点，也可以学习如何从游戏中剖析开发技术原文
+">
+    <meta property="og:description" content="一篇关于塞尔达野炊的图形技术分析。解析了不少技术点，也可以学习如何从游戏中剖析开发技术原文
+">
+    <meta property="og:type" content="blog">
+    <meta property="og:title" content="塞尔达野炊图形技术分析">
+    <meta property="og:url" content="/2018/08/%E5%A1%9E%E5%B0%94%E8%BE%BE%E9%87%8E%E7%82%8A%E5%9B%BE%E5%BD%A2%E6%8A%80%E6%9C%AF%E5%88%86%E6%9E%90/">
+    <meta property="og:site_name" content="Nothing but Tech&amp;Art">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Nothing but Tech&amp;Art">
+    <meta name="twitter:description" content="一篇关于塞尔达野炊的图形技术分析。解析了不少技术点，也可以学习如何从游戏中剖析开发技术原文
+">
+    
+    
+
+    
+    
+
+    
+      <meta property="og:image" content="https://milkp.github.io/images/Avater.jpg">
+    
+
+    
+    
+      <meta property="og:image" content="http://wx1.sinaimg.cn/large/66586248gy1fu5iqx2b1bj21jk0v9gwa.jpg">
+    
+    
+
+    
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/jquery.fancybox.min.css" integrity="sha256-vuXZ9LGmmwtjqFX1F+EKin1ThZMub58gKULUyf0qECk=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.4/helpers/jquery.fancybox-thumbs.min.css" integrity="sha256-SEa4XYAHihTcEP1f5gARTB2K26Uk8PsndQYHQC1f4jU=" crossorigin="anonymous" />
+    
+    
+    <link rel="stylesheet" href="https://milkp.github.io/css/tranquilpeak.css" />
+    
+    
+
+    
+      
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-122872223-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+
+    
+    
+  </head>
+
+  <body>
+    <div id="blog">
+      <header id="header" data-behavior="4">
+  <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+  <div class="header-title">
+    <a class="header-title-link" href="https://milkp.github.io/">Nothing but Tech&amp;Art</a>
+  </div>
+  
+    
+      <a class="header-right-picture "
+         href="https://milkp.github.io/#about">
+    
+    
+    
+      
+        <img class="header-picture" src="https://milkp.github.io/images/Avater.jpg" alt="作者的图片" />
+      
+    
+    </a>
+  
+</header>
+
+      <nav id="sidebar" data-behavior="4">
+  <div class="sidebar-container">
+    
+      <div class="sidebar-profile">
+        <a href="https://milkp.github.io/#about">
+          <img class="sidebar-profile-picture" src="https://milkp.github.io/images/Avater.jpg" alt="作者的图片" />
+        </a>
+        <h4 class="sidebar-profile-name">Wang Zuo</h4>
+        
+          <h5 class="sidebar-profile-bio">Still Naive, Still Simple</h5>
+        
+      </div>
+    
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://milkp.github.io/">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-home"></i>
+      
+      <span class="sidebar-button-desc">首页</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://milkp.github.io/categories">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-bookmark"></i>
+      
+      <span class="sidebar-button-desc">分类</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://milkp.github.io/tags">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-tags"></i>
+      
+      <span class="sidebar-button-desc">标签</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://milkp.github.io/archives">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-archive"></i>
+      
+      <span class="sidebar-button-desc">归档</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://milkp.github.io/#about">
+    
+      <i class="sidebar-button-icon fa fa-lg fa-question"></i>
+      
+      <span class="sidebar-button-desc">关于</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+
+    </ul>
+  </div>
+</nav>
+
+      
+  <div class="post-header-cover
+              text-center
+              "
+       style="background-image:url('http://wx1.sinaimg.cn/large/66586248gy1fu5iqx2b1bj21jk0v9gwa.jpg')"
+       data-behavior="4">
+    
+  </div>
+
+
+      <div id="main" data-behavior="4"
+        class="hasCover
+               hasCoverMetaOut
+               ">
+        <article class="post" itemscope itemType="http://schema.org/BlogPosting">
+          
+          
+            <div class="post-header main-content-wrap text-center">
+  
+    <h1 class="post-title" itemprop="headline">
+      塞尔达野炊图形技术分析
+    </h1>
+  
+  
+  <div class="postShorten-meta post-meta">
+    
+      <time itemprop="datePublished" datetime="2018-08-11T08:41:40&#43;08:00">
+        
+  八月 11, 2018
+
+      </time>
+    
+    
+  </div>
+
+</div>
+          
+          <div class="post-content markdown" itemprop="articleBody">
+            <div class="main-content-wrap">
+              <p>一篇关于塞尔达野炊的图形技术分析。解析了不少技术点，也可以学习如何从游戏中剖析开发技术<a href="https://www.resetera.com/threads/zelda-breath-of-the-wild-the-technical-analysis.8197/">原文</a>
+</p>
+
+<p><a href="https://www.digitalfoundry.net/">数毛社</a>将野炊排在了2017 Best Gaming Tech的第三位（前两位是地平线黎明时分和AC起源）。很多人不解为什么一个卡通渲染的游戏能排在第三。看完这篇分析，再想想一下野炊的原目标平台是WiiU，就会发现这个名次实至名归。</p>
+
+<p>正文：<br />
+我将从我的调查结果的总结开始，但在本文后面部分会对每个技术特性进行详细解释以便理解。我也会尽量避免删减。例如，如果像Digital Foundry这样的其他地方的文章已经分析过引擎的某个功能，那我就不打算在这里讨论了。这篇文章的目的是为了让更多的人接触到那些还没有人探究到的游戏中的技术成就。</p>
+
+<p>那么，以下是引擎中功能的列表：<br />
+- Global Illumination (more specifically, Radiosity)<br />
+- Local Reflections (calculated along Fresnel)<br />
+- Physically-based Rendering<br />
+- Emissive materials/area lights<br />
+- Screen Space Ambient Occlusion<br />
+- Dynamic Wind Simulation system<br />
+- Real-time cloud formation (influenced by wind)<br />
+- Rayleigh scattering/Mie Scattering<br />
+- Full Volumetric Lighting<br />
+- Bokeh DOF and approx. of Circle of Confusion<br />
+- Sky Occlusion and Dynamic Shadow Volumes<br />
+- Aperture Based Lens Flares<br />
+- Sub-surface Scattering<br />
+- Dynamically Localized Lightning Illumination<br />
+- Per-Pixel Sky Irradiance<br />
+- Fog inscatter<br />
+- Particle Lights<br />
+- Puddle formation and evaporation</p>
+
+<h2 id="global-illumination-radiosity">Global Illumination/Radiosity</h2>
+
+<p>首先，我想说目前所有实时全局照明解决方案都是以某种方式伪造出来的，并且带有不同程度的准确性。因此，任何因为BOTW中没有使用光追或类似的东西就忽略了它的全局照明解决方案的人应该再好好考虑下他们的想法。消除这一点误解的重要部分是BOTW的全局光是实时的；它不是之前那种烘焙到贴图上的光照(LM之类的)，这对于开放的世界游戏来说相当令人印象深刻（特别是在Wii U上）。</p>
+
+<p>那么光能传递（Radiosity）到底是什么？在3D图形渲染中，它是对光在不同表面间反弹的全局光照系统的模拟近似，并且根据该过程将颜色信息从一个表面传递到另一个表面。光能传递越精确就需要计算越多的光线反弹来保证传递的颜色正确。</p>
+
+<p>在BOTW中，引擎在整个环境中使用光照探头（Light Probes）来收集光照探头附近不同表面的颜色信息。BOTW没有模拟光反弹，只是计算了一些来自特定区域的颜色的近似值（没有直接计算间接光照，而只是模拟了物体的颜色之间的影响）。 BOTW用于计算此信息的确切算法还不清楚，但我能想到的最好的方案是球谐函数或类似的东西，基于局部光能传递的颜色平均值和区域化进行计算。与超级马里奥奥德赛不同，BOTW中的光能传递非常精细，而不是二进制（？）。光照探头计算的照明信息似乎在渲染管线层级就实现了流式传输，并与LOD系统绑定，这使得它非常高效。</p>
+
+<h3 id="更新">更新：</h3>
+
+<p>最初，我假设球形谐波探头可能已经放置在整个环境中来收集颜色样本，因为当林克在整个环境中移动时，它似乎会更新为普通的颜色。然而，经过进一步调查，我现在知道那些普通的颜色反弹其实是由于环境中缺乏颜色变化。当我在具有许多彼此相邻的不同颜色表面的区域中测试全局照明时，GI系统如何工作变得清晰明确了。请注意，当林克接近红墙时，其颜色会传递到面向相反方向的所有表面（法线反向的面）。对于直接位于红墙对面的绿墙也是如此（虽然它不是很强烈，这是因为探头更靠近红墙，而红墙的颜色本身会有更强烈的反射）。在任何给定的某点上，这个过程都会在各个方向上发生。地面会将颜色向上传递，而林克头部正上方的任何天花板或彩色表面也都会传递其颜色。探头动态地持续采样并传输颜色（我们可以认为是轻微的反弹），因为探测器会根据新的传输而拾取更多颜色并且对它们进行采样。最后，到达一定程度后最终的结果将停止改变，因为最接近探头的样本将会得到最主要的颜色而不管颜色转移的量。这个过程有一定的先后顺序，但非常局部化，因此速度非常快。光照探头的取样范围有限，并将这些结果应用于世界空间的材质上。有了这种效率，探头可以近似出现许多光照反弹的效果，但它只有在最靠近探头的区域才看起来准确。</p>
+
+<h3 id="实例视频"><em>实例视频：</em></h3>
+
+<p>观察提示：注意当相机靠近该区域时，悬崖的表面如何从草地上获得绿色色调。</p>
+
+<p><a href="https://v.qq.com/x/page/a0767f8pfyt.html">全局光1</a></p>
+
+<p><embed src="https://imgcache.qq.com/tencentvideo_v1/playerv3/TPout.swf?max_age=86400&v=20161117&vid=a0767f8pfyt&auto=0" allowFullScreen="true" quality="high" width="480" height="400" align="middle" allowScriptAccess="always" type="application/x-shockwave-flash"></embed></p>
+
+<p><a href="http://v.qq.com/x/page/b0767m8enbq.html">全局光1</a></p>
+
+<p>全局照明实际上是模拟多次反弹。在林克的头部上方有一个光探头可以对环境中大多数材料的颜色进行采样。然后传送每个采样的颜色并以相反的方向反射。它的强度被计算式中的探针最接近的表面以及反射光的强度这两项影响。</p>
+
+<p>在开阔的地方看可能不是很明显，但是在有很多临近物体的时候这个GI特性看起来相当不错。</p>
+
+<h2 id="real-time-local-reflection">Real-time Local Reflection</h2>
+
+<p>自从我开始分析这个游戏以来，总是让我头疼的一个地方是局部反射。因为似乎存在许多不一致的案例，所以我得到的结果最初显得很凌乱。不过我现在可以自信地说，我已经完全解决了局部反射如何运作背后的谜团。显然，这其实是根据具体情况使用了三管齐下的实现方法。</p>
+
+<h3 id="1-specular-lighting">1.Specular Lighting</h3>
+
+<p>阳光，天光，闪电，点光源和区域光属于此类别。最初我认为神社和灯塔（WIFI塔）也属于这类（因为它们有自发光，所以我以为它们是区域光），但在看到老任展示的非常具有启发性的设定集（没错，就是那本游戏设定集。。。）之后就可以排除它们了。并非所有的自发光材质都能照亮环境，而神庙和灯塔就属于这种看似自发光但其实并不照亮环境的，可以被认为是非自发光材质的物体。</p>
+
+<h3 id="2-aperture-mapped-reflections">2.Aperture mapped reflections</h3>
+
+<p>如果这个术语对你来说似乎很新，那就对了。根据BOTW的翻录（<a href="https://gamefaqs.gamespot.com/n64/197771-the-legend-of-zelda-ocarina-of-time/faqs/20240">Text Dump</a>），BOTW开发人员在内部标记了他们对UE4的场景捕获2D反射的看法。这就是环境反射实现的方式。 林克的头顶（特别是镜头）上方的虚拟摄像机具有相对较小的FOV，因此当林克移动时，它可以使反射（实时显示）在其适当的空间移动，直到镜头再次捕获环境。你可以在我收录的视频中看到这些效果和FOV。</p>
+
+<h3 id="3-screen-space-reflections">3.Screen Space Reflections</h3>
+
+<p>只有看起来像是复合材质的物体才使用这种反射模型，而这些材质仅限于神庙内部（神庙的墙壁等）。其gloss map中的值告诉引擎只对这些材料使用SSR。它们将反映屏幕上的任何内容，可以在场景中任何材质的掠射角度上看到（Fresnel效果）。然而，这些材质也使用场景捕获进行环境反射，这是我混淆的原因之一。这些材质反射的不协调行为使我对神庙外的其他材料也做出了假设。不过还好我们已经解决了这个问题。</p>
+
+<p>译注：猜测可能是因为神庙内部实质上是一个独立空间，渲染压力大大减少，所以可以有更多性能应用效果更好的特性。</p>
+
+<h3 id="实例视频-1"><em>实例视频：</em></h3>
+
+<p>观察提示：看看林克的反射与蓝灯的反射相比较。林克必须在屏幕上才能显示其反射，而蓝灯不需要在屏幕上也能显示其反射。</p>
+
+<p><a href="http://v.qq.com/x/page/a0767dpghz7.html">Real-time Local Reflection 01</a></p>
+
+<p><a href="https://v.qq.com/x/page/w0767llqahi.html">Real-time Local Reflection 02</a></p>
+
+<p>神庙内部的材质有一层额外的光泽反射（Gloss Reflection），但它们也使用与外部世界相同的反射模型进行反射。所以这就是分析初期令人困惑的原因！</p>
+
+<p>对于有光泽的材质，可以在屏幕空间（SSR）中捕获所有内容的反射。对于非光泽材质，基本上都是神庙外部材质，环境的反射是通过与UE4中使用的场景捕获2D技术几乎相同的技术实现的。我不知道Nintendo在内部怎么称呼它，所以我们仍然称它们为场景捕获2D反射。本质上就是一个虚拟摄像机（具有自己的平截头体和FOV）位于林克的头部正上方，始终面向主摄像机的地平线，无论Link的方向如何（这可以允许有限的屏幕外反射）。然后将捕获的图像传递到产生反射的材质中，类似于传递电视的直播信号。这意味着图像的传递是以游戏运行的相同帧率（30 fps）实时投影的。这允许不同部分的材质实时更新而无需等待新的捕获。但是，实际上捕获的过程本身会以更低的fps（~4-5fps）进行。只要场景捕捉相机从其绝对位置移动，你就可以看到这一点。在更新捕获反射之前，当前捕获的反射会在材质范围（例如，水）移动到相机移动的任意地点（30fps）。但是一旦材质收到更新的捕获，反射就会得到纠正。这种校正的延迟使我们可以更好地了解捕获更新是根据应用了材质物体的位置进行的。（~4-5 fps）。</p>
+
+<p>这里有更多的关于场景捕获反射的信息：</p>
+
+<p><a href="https://docs.unrealengine.com/en-us/Resources/ContentExamples/Reflections/1_7">UE4 - Scene Capture 2D</a></p>
+
+<p><a href="http://v.qq.com/x/page/p0767uq98rq.html">Real-time Local Reflection 03</a></p>
+
+<p>你可以在这里看到，非即时的反射仍然可以顺利地跟踪Link的运动。没有任何卡壳。然后当捕获更新时反射得到纠正。这与反射贴图的工作方式不同，反射贴图仅在贴图本身更新时更新反射。在这里，捕获的反射显然已经不是即时的了，但它仍然以30fps的帧率改变它的位置。</p>
+
+<p>还可以在这个视频中感受捕捉相机的FOV：</p>
+
+<p><a href="https://v.qq.com/x/page/m0767apkcuj.html">Real-time Local Reflection 04</a></p>
+
+<p>这就可以知道为什么所有非自发光材料都只有菲涅耳反射。再这些反射技术下，菲涅尔是它唯一可以发生反射的角度！</p>
+
+<p>当我跑到这个拱门时，意识到这是测量捕捉相机的FOV的完美设置：</p>
+
+<p><a href="https://v.qq.com/x/page/p0767rr4kxn.html">Real-time Local Reflection 05</a></p>
+
+<p>结合一些三角划分来看一下：
+<img src="http://wx1.sinaimg.cn/large/66586248gy1fun9qbbjirj21601k07j1.jpg" alt="" /></p>
+
+<p>我估计水平FOV约为115°左右。甚至在林克走过拱门之前，拱门的反射就已经脱离屏幕了，这表示它已经离开了捕捉相机的FOV，所以我们知道它绝对不是180°的FOV，否则拱门的反射应该保持得很好。</p>
+
+<p>你还可以看到，当摄像机距离拱门几英尺远并且垂直于拱门时，反射是倾斜的并且与FOV成比例缩放，这使我们可以看到它的宽度。这就得到了场景捕捉相机的相对水平FOV。</p>
+
+<p>我想重申一下，虽然这是粗略的估计，可能会偏离个10度左右，但是对于这个FOV有一些角度是达不到的，所以通过排除法，我们至少能有一个大概值。</p>
+
+<h2 id="physically-based-rendering">Physically-based Rendering</h2>
+
+<p>在任何人发问之前我先声明，这并不意味着“物理上正确的材质”。它只是一种应用于3D图形渲染管道的方法，其中所有材质（赋予了纹理的表面）都独特地影响光与它们交互时的行为方式。这就是真实世界中发生的事情，这也就是为什么它被称为基于物理的渲染（一种基于真实世界的光物理的概念）。不同的材质导致光的表现不同，这就是为什么我们可以在第一时间在视觉上区分不同材质的表面。</p>
+
+<p>传统流程中，渲染pipeline依赖于美术们对光与真实世界中不同的材质的交互方式的理解，并基于该理解来制作贴图，得到物件的外观。因此，不同的纹理表面之间以及它们与现实世界中的对照物的对比都存在很多不一致性，（这也可以理解，因为我们不能指望美术们对真实世界中的所有物质的所有属性都有百科全书般的知识）。对于PBR，光物理的基本原理是pipeline本身的一部分，并且所有纹理表面都被归类为具有独特属性的材质，这些属性将导致光根据​​这些独特属性来得到最终表现。这样就可以将表面放置在各种不同的光照条件和动态摄像机角度下，并动态地调整光线与这些表面的交互方式。美术们不必像传统的工作流程那样预定义这种交互。现在它会自动根据属性生成。由于PBR的特性，开发者更倾向于制作所有材质都具有能产生不同光照表现的独特属性的游戏。</p>
+
+<p>在BOTW中，PBR带有一些艺术性（风格化），所以你可能不会注意到引擎竟然还用了PBR的渲染管线，因为这个游戏中的纹理贴图看起来并不需要带有真实感。然而，材质Shader上使用的BRDF（双向反射分布函数）明确地表明了引擎使用了PBR渲染管线。你可以看到在每个动态光源作用下，镜面高光和这些高光的reflectivity/reflectance是根据角度发生率（入射光相对于surface的法线比例），以及与光线发生相互作用的表面的材质的折射率这两项来动态生成的。如果游戏使用传统的pipeline，那些镜面高光的分布在木材和金属之间没有太大差异。但在这个游戏中，镜面高光的产生完全取决于与光相互作用的材质类型。</p>
+
+<p>另一个显示BOTW使用PBR的关键因素是所有材料的Fresnel反射。首先，大多数使用传统的pipeline的游戏甚至都不会引入Fresnel，因为有时你也可以只使用PBR而不带有菲涅尔。正如在Local Reflection中所解释的那样，菲涅耳反射在掠射角（入射光几乎平行于与观察者/相机的视角相互作用的表面）的角度时就会变得可见。</p>
+
+<p>根据菲涅耳反射系数，所有材质在掠射角上都会达到100％的反射率，但该反射率的有效性将取决于材质的粗糙度。因此，程序员可以区分“reflectivity”和“reflectance”①。一些材质反射所有方向的光（漫反射材质）。即使在100％的反射率下，100％的光线也可能从整个表面区域反射出来，但并不是所有光线都在同一方向上反射，因此光线会均匀分布导致你看不到任何镜面反射。其他材质仅从入射光的相反方向反射光线（镜面反射材料），因此你只能以适当的角度看到反射，其中会有接近90％的光被反射。即使在掠射角下，漫反射和镜面反射材料的反射率（材质反射入射光的能力）也并不总是100％，这就是为什么在所有材质的掠射角下都看不到完美的镜面反射，甚至在现实的世界中也是如此。菲涅耳反射的清晰度将随产生反射的材料而变化。</p>
+
+<h3 id="实例视频-2"><em>实例视频：</em></h3>
+
+<p>观察提示：注意照亮木桶的木材的绿色光源在所有角度看起来都是相同的，而且从相机角度看，这个绿色光源似乎还改变了它在金属桶箍（桶上的金属圈）上的反射。</p>
+
+<p><a href="http://v.qq.com/x/page/g0767cihobg.html">Physically-based Rendering</a></p>
+
+<h2 id="emissive-materials-and-area-lights">Emissive Materials and Area Lights</h2>
+
+<p>这个就比较简单了。发光物体的材质提供独特的光源，根据材质本身相同的形状照亮环境。这些并不是向所有方向辐射的点光源，有些甚至只是在一个特定方向上发光的简单定向光源。它们基本上是“定制形状”的光源。重要的是要提到只有全局光源（太阳/月亮/闪电）投射阴影。不过BRDF仍然适用于游戏中的所有光源。</p>
+
+<h3 id="实例视频-3"><em>实例视频：</em></h3>
+
+<p>观察提示：观察火焰剑施放的光的形状。它与剑本身的形状相匹配，但光线的强度则取决于剑与它所照射的表面的距离。</p>
+
+<p><a href="https://v.qq.com/x/page/x0767r8t3yj.html">Emissive materials and area lights</a></p>
+
+<h2 id="screen-space-ambient-occlusion">Screen Space Ambient Occlusion</h2>
+
+<p>在现实世界中，有一定量的“环境光”在环境中的光线反射到环境之后为环境着色，由于这些光线的量足够多所以最终影响了物体的漫反射结果。如果说阴影是遮挡直射阳光的物体的结果，那么环境遮挡可以被认为是环境中裂缝和裂隙等阻挡了环境光的结果。</p>
+
+<p>BOTW中使用的方法称为SSAO（屏幕空间环境遮挡），它计算屏幕空间中的AO并且它是基于视图的。只有当环境相对于相机垂直时，整体环境才会接收AO。（个人理解应该是指计算SSAO时使用的深度值）</p>
+
+<h3 id="实例视频-4"><em>实例视频：</em></h3>
+
+<p>观察提示：直接对着墙观察时，仔细看墙壁裂缝和裂缝中的暗色阴影噪声图。同样的噪音图也从这个角度勾勒出林克的轮廓。</p>
+
+<p><a href="https://v.qq.com/x/page/w076743k8md.html">Screen Space Ambient Occlusion</a></p>
+
+<h2 id="dynamic-wind-simulation-system">Dynamic Wind Simulation System</h2>
+
+<p>这个让我感到有些惊讶，因为我没想到它会如此牛逼。基本上来说，物理系统与风力模拟系统相关联。它完全是动态的，并根据各自的重量值影响不同的物体。受影响最突出的对象是草叶和程序化生成的云。</p>
+
+<h3 id="实例视频-5"><em>实例视频：</em></h3>
+
+<p>观察提示：如果仔细观察，可以看到草和云的方向是怎样与风的变化方向相匹配的。</p>
+
+<p><a href="https://v.qq.com/x/page/k0767s2jtri.html">Dynamic Wind Simulation System</a></p>
+
+<h2 id="real-time-cloud-formation">Real-time Cloud Formation</h2>
+
+<p>这个游戏并没有使用传统的天空盒。云是根据引擎上的参数设置来动态生成的。他们可以投射实时的阴影。他们根据太阳在天空中的位置获得光照信息。据我所知，云被视为一种游戏中的实际存在的材料。它们不是体积化的，因此你不会得到任何类似于与曙光或者黄昏光线一类的东西，但它们也不是“天空盒”的云。它们的形成也受到风系统的影响。</p>
+
+<h3 id="实例视频-6"><em>实例视频：</em></h3>
+
+<p>观察提示：注意天空中的云粒子如何随机性地聚集在一起。</p>
+
+<p><a href="https://v.qq.com/x/page/i0767df1mwi.html">Real-time Cloud Formation</a></p>
+
+<h2 id="rayleigh-scattering-mie-scattering-瑞利散射-米氏散射">Rayleigh Scattering/Mie Scattering（瑞利散射/米氏散射）</h2>
+
+<p>在真实世界中，当光线到达地球大气层时，它会被空气分子散射，这个现象生成了地球的蓝色天空，因为波长较短的蓝光比其他颜色的光更容易发生散射。然而，当太阳接近地平线时，它必须穿过更多的大气，导致大部分蓝光在太阳光到达观察者眼睛前就发生散射了，留下了波长更长的的橙色和红色光。 BOTW以数学方式近似这个算法（我实际上是通过今年早些时候的游戏代码的文本转储找到了它！）显然，算法也解释了Mie Scattering，它在天空中生成了雾气。</p>
+
+<p>实话说，如果我没有查看该文本转储中的代码，我是绝不会认为这种现象是在游戏中模拟的。因为这个做个假很容易。然而，在观察了天空在水中的倒影之后，这一切就解释得通的。这种散射光实时反射到整个环境中，而一个简单的天空盒则不可能做到。</p>
+
+<h3 id="实例视频-7"><em>实例视频：</em></h3>
+
+<p>观察提示：注意天空中橙色和红色两种色调如何反映在本来具有相同颜色的环境中。另外尽管未在视频中显示，但是根据光的散射方式，天空的光散射也照亮了环境和水以及其他颜色的物体。</p>
+
+<p><a href="http://v.qq.com/x/page/e0767m0fjor.html">Atmosphere Scattering 01</a></p>
+
+<p>观察提示：注意雪在太阳落山时的颜色变化。</p>
+
+<p><a href="https://v.qq.com/x/page/g0767j4zpp2.html">Atmosphere Scattering 02</a></p>
+
+<p>观察提示：以下这个视频的开头的水中至少有5种不同的反射源。神庙（蓝色），山丘（绿色），旗帜（黑色轮廓），天空（橙色）和太阳（粉色）。山丘，旗帜和神社都通过场景捕捉反射实现的反射，太阳通过镜面反射（作为镜面反射高光）反射，天空也通过镜面反射光反射，但它不是镜面高光。随着暴雨的出现，可以看到反射的变化是完全动态的。天空被乌云遮挡会实时改变天空中瑞利散射。最终，橙色的天光不再能够到达水面，因此它会逐渐消失，但太阳仍然存在，因为它没有被完全挡住。然而，由于天空中有相当多的的米氏散射，太阳的颜色从粉红色变为了白色！即便如此，云层还是太多了并完全挡住了太阳，最终只留下了神庙的光线和山丘的部分的反射。</p>
+
+<p><a href="https://v.qq.com/x/page/t0767p5689i.html">Atmosphere Scattering 03</a></p>
+
+<h2 id="full-volumetric-lighting">Full Volumetric Lighting</h2>
+
+<p>除了天空中的云，环境场景的每个部分以及其中的每个物体都有可能在得到适当的照明条件下实时创建光柱。游戏使用SSAO来辅助效果，但实际上体积照明并不根据视角而变化。你可以在本文的阴影体积部分找到有关体积照明如何工作的更多信息。</p>
+
+<h3 id="实例视频-8"><em>实例视频：</em></h3>
+
+<p>观察提示：注意光柱是如何在大型结构投射阴影的同时产生的。</p>
+
+<p><a href="http://v.qq.com/x/page/w07678x05gh.html">Full Volumetric Lighting</a></p>
+
+<h2 id="bokeh-dof-and-approx-of-circle-of-confusion">Bokeh DOF and approx. of Circle of Confusion</h2>
+
+<p>这是我假设的引擎使用延迟照明/阴影实现的另一项令人惊讶的功能。这里我将做一些简化，它可以真正技术性地试图解释为什么Bokeh效应（散景）会发生在现实世界中。当光进入眼睛/照相机的光圈（开口）时，入射光线开始会聚到焦平面上的单个点。随着光线越来越集中在这个平面上，它的外观变得越来越小。随着光线远离该平面变得更加离焦，它变得更大且更模糊。</p>
+
+<p>众所周知的散景效应表示的是进入相机镜头的光点会呈现它们通过的孔的形状时（例如像六边形）。弥散圆是人眼无法区分完全聚焦和稍微不聚焦时光形成的圆点，即在焦点附近，光线还未聚集到一点，点的影象成为模糊的一个圆，这个圆就叫做弥散圆。景深通常由弥散圆决定。有趣的是，在使用希卡示波器或相机时，BOTW会模拟这两个现象。我猜测它是基于纹素（纹理元素）数据在屏幕空间中计算的，然后作为后处理效果。</p>
+
+<h3 id="实例视频-9"><em>实例视频：</em></h3>
+
+<p>观察提示：注意相机产生的模糊和金属箱子上闪亮的蓝色闪光。当相机聚焦在远离光源的距离时，光源变得更加模糊并且看起来也更大。当相机直接对准光源时会发生相反的情况。蓝色光转换成的圆形形状称为散景效果。</p>
+
+<p><a href="http://v.qq.com/x/page/l0767b0vb15.html">Bokeh DOF</a></p>
+
+<h2 id="sky-occlusion-and-dynamic-shadow-volumes">Sky Occlusion and Dynamic Shadow Volumes</h2>
+
+<p>除了游戏中的物理特性之外，这些着色特性毫无疑问是BOTW中计算量最大的部分。以下就是关于这一切是如何运作的：</p>
+
+<p>即使云本身没有任何体积，它们仍会将（软）阴影投射到环境中。然而，太阳和来自天空的散射光动态地照亮环境，环境和其中的所有物体根据这些照明投射出自己的阴影。如果天空完全被阴云覆盖时环境中的照明仍然保持不变的话看起来就很不真实。所以老任通过实现Sky Occlusion来解决这个问题。</p>
+
+<p>通过使用米氏散射算法（mie系数模拟大气中雾的影响），引擎会基于大气中雾和云的程度计算需要从环境中移除多少天光。环境中天光被遮挡得越多，环境就越显得灰蒙。由于遮挡区域的直接照明减少，环境光（Diffuse，非定向光）将在这些区域的照明中发挥更大的作用，并且这些区域中的所有阴影将变得更柔和并变得和他们周围的即时环境的颜色相匹配。</p>
+
+<p>引擎还使用了阴影体积来代替简单的Shadow Map，而且游戏中的每个阴影投射体都使用了这个方式。阴影体积在一个特殊的3D空间中投射，而不是在环境中的物件和表面上。阴影体积的实现不仅使天光遮挡更加可信，当它与可以接收阴影的大气雾结合时，在3D空间内动态生成阴影体积还可以提供全实时体积光照，这些都是在BOTW中确定存在的。</p>
+
+<h3 id="实例视频-10"><em>实例视频：</em></h3>
+
+<p>观察提示：观察旗帜的硬边阴影在暴风雨出现时是如何变得柔和的，并随着暴风雨越来越剧烈从环境光属性上接收更多的颜色。</p>
+
+<p><a href="https://v.qq.com/x/page/z0767gzepll.html">Sky Occlusion and Dynamic Shadow Volumes 01</a></p>
+
+<p>观察提示：注意旗帜的运动如何与它产生的光柱相关联。光柱之间的暗部来自旗帜的阴影体积。标志的动态摆动告诉我们这些阴影体积是在运行时实时生成的。</p>
+
+<p><a href="https://v.qq.com/x/page/f0767a0ra95.html">Sky Occlusion and Dynamic Shadow Volumes 02</a></p>
+
+<h2 id="aperture-based-lens-flares">Aperture-based Lens Flares</h2>
+
+<p>这个功能其实被99%的玩家忽略了，所以老实说我不确定它是不是真的值得去实现。</p>
+
+<p>简单来说，当来自明亮光源的光线以某些倾斜角度进入相机镜头时，由于光线在相机元件内部发生反射和散射，会产生称为镜头眩光的光学伪影。大多数游戏只是在相机略微偏离相机平截头体时将耀斑作为一个post-process来模拟这种现象。在相机内部内部反射的光的概念甚至都没有反映在计算公式中。</p>
+
+<p>在BOTW中，由于引擎已经模拟了DOF的摄像机光圈，它可以跟踪光圈与太阳的相对位置并计算出应该产生多少镜头光斑，即使太阳不在屏幕上也是如此。但那还不是全部！具有大量变焦元件的相机更容易出现镜头光晕，并且光斑会根据光圈的形状/大小和变焦水平来改变形状和大小。BOTW也近似模拟了这些效果，令人惊叹！</p>
+
+<h3 id="实例视频-11"><em>实例视频：</em></h3>
+
+<p>观察提示：你可以看到即使太阳在屏幕外，镜头炫光（圆形光效果）仍然存在。更重要的是，镜头光晕的形状，大小和清晰度都随着相机变焦水平而变化。</p>
+
+<p><a href="https://v.qq.com/x/page/v0767zzpoz1.html">Aperture-based Lens Flares</a></p>
+
+<h2 id="sub-surface-scattering">Sub-surface Scattering</h2>
+
+<p>在现实世界中，一些表面是半透明的（不要与透明混淆），这意味着光可以穿过表面在其内部发生散射。现实世界中半透明表面的一些例子是人类皮肤，葡萄，蜡和牛奶。在3D图形学中对光的这种独特行为的建模称为子表面散射或SSS。与大多数实时3D渲染解决方案一样，程序大佬们已经提出了几种近似效果的方法而无需在分子级别水平上计算模拟光反弹。BOTW中使用的这种方法就相对简单但有效。</p>
+
+<p>BOTW中任何会有一定程度半透明的表面，都需要有多层材质来实现SSS效果。第一层是内部材质，这个材质通常bake上光照信息来得到一个半透明的观感。光穿过材质但实际上并不实时地照亮这个材质的物体本身。在这种材质之上时表面材质，这种材质在两者中占据主导地位，在大多数照明条件下都可以看到。</p>
+
+<p>这些材质之间的关系以这样的方式工作的：即任一材质的主要外观总是由入射光和透射光之间的比率决定。如果表面材质反射的光比内部材质透射的光更多，则表面材质的不透明度将与其接收的光成比例增加。如果内部材质透射的光比表面材质反射的光多，那么表面材质的不透明度将与其未接收的光成比例地减少。根据发生率/透过率来平衡表面材料的不透明度是一种非常智能且有效的方法，可以使材料具有不错SSS效果。</p>
+
+<h3 id="实例视频-12"><em>实例视频：</em></h3>
+
+<p>观察提示：注意稳定内部的光线如何能够漫射地照射外表面。林克在屋顶上的阴影也被来自内部的光照亮，但在地面上时就不是了。</p>
+
+<p><a href="https://v.qq.com/x/page/p0767trxvlo.html">Sub-surface Scattering 01</a></p>
+
+<p>另一个查看SSS的角度</p>
+
+<p><a href="https://v.qq.com/x/page/v07672q4euf.html">Sub-surface Scattering 02</a></p>
+
+<p>观察提示：注意表面材料如何变得更不透明。因为它接收到更多光线，遮挡了内部材料。</p>
+
+<p><a href="https://v.qq.com/x/page/x076791mvll.html">Sub-surface Scattering 03</a></p>
+
+<p>观察提示：注意表面材料如何变得不透明。因为它接收的光线较少，从而显示出内部材料。
+<a href="https://v.qq.com/x/page/o0767fq2j5a.html">Sub-surface Scattering 04</a></p>
+
+<h2 id="dynamically-localized-lightning-illumination">Dynamically Localized Lightning Illumination</h2>
+
+<p>许多实现闪电的方式是将其作为全局的环境照明，当闪电整个环境中闪烁时，所有阴影投射体都以预设定好的大小和方向投射阴影。</p>
+
+<p>在BOTW中，闪电可以看作是大号的相机闪光灯，每个闪光灯都有自己的半径和强度，并且能够在地图上的任何地方制造闪电而不管玩家当前位置如何。BOTW闪电系统的有趣之处在于它会动态地根据阴影投射体最近的雷击的强度和位置来计算出阴影。这个系统可能是我在游戏中见过的最酷的闪电系统。</p>
+
+<h3 id="实例视频-13"><em>实例视频：</em></h3>
+
+<p>观察提示：注意每次闪电时阴影的大小，方向和对比度的变化。</p>
+
+<p><a href="https://v.qq.com/x/page/v0767psvexn.html">Dynamically Localized Lightning Illumination</a></p>
+
+<h2 id="per-pixel-sky-irradiance">Per-Pixel Sky Irradiance</h2>
+
+<p>如果辐射度（Radiance ）可以被认为是来自太阳的辐射量，则辐照度（Irradiance ）可以被认为是给定表面实际接收的辐射量。对于天光来说来说，这是一个非常重要的变量，因为移除它是我们能看见夜晚星空的主要原因。BOTW使用跟踪太阳相对于天顶的位置的算法来计算辐照度。在日落期间，它开始逐个像素地移除天光，直到完全没有辐照度为止。当天空没有云层覆盖和米氏散射后，星星将开始出现在天空中，即使此时天空还没有完全变黑。夜晚和白天之间的颜色渐变过渡令人印象相当深刻。</p>
+
+<h3 id="实例视频-14"><em>实例视频：</em></h3>
+
+<p>观察提示：其实太阳落山时你应该能够看到星星出现，但视频压缩可能导致他们不是很清楚。</p>
+
+<p><a href="https://v.qq.com/x/page/u0767rrdgre.html">Per-Pixel Sky Irradiance</a></p>
+
+<h2 id="fog-inscatter">Fog Inscatter</h2>
+
+<p>在现实世界中，雾会像物体一样受到光照和阴影的影响。而在计算机图形处理中，如果雾是体积的，那么计算成本会十分高昂。BOTW通过创建雾噪声图（类似于它们的环境遮挡噪声图，但不限于屏幕空间）并应用来自太阳和天光的辐射值来产生&rsquo;inscatter&rsquo;来解决这个问题。当你将它与阴影体积结合使用时，不仅可以获得体积光照，还可以使它看起来像有体积的雾，即使它实际上并没有体积。</p>
+
+<h3 id="实例视频-15"><em>实例视频：</em></h3>
+
+<p>观察提示：注意山上的雾如何呈现出环境中可见光的颜色，并且看起来也具有体积。</p>
+
+<p><a href="https://v.qq.com/x/page/g0767abhgex.html">Fog Inscatter</a></p>
+
+<h2 id="particle-lights">Particle Lights</h2>
+
+<p>游戏中的几乎每个粒子都是自发光的（glowing），其中许多也照亮了环境。许多粒子不是将粒子渲染为物体，而是简单的点光源，它们在3D空间的所有方向上发生辐射。</p>
+
+<h3 id="实例视频-16"><em>实例视频：</em></h3>
+
+<p>观察提示：注意发光的余烬如何在3D空间中独立移动，而不管相机如何变化。</p>
+
+<p><a href="https://v.qq.com/x/page/h0767e9ch8i.html">Particle Lights 01</a></p>
+
+<p>观察提示：冰雪粒子在BOTW中呈现为粒子光。一种给冰雪粒子提供反射阳光的错觉的方法。当然也可能只是一种艺术角度的选择。</p>
+
+<p><a href="https://v.qq.com/x/page/t0767zywr8r.html">Particle Lights 02</a></p>
+
+<p>观察提示：注意萤火虫如何照亮它们靠近的表面。</p>
+
+<p><a href="https://v.qq.com/x/page/z0767itil7e.html">Particle Lights 03</a></p>
+
+<h2 id="puddle-formation-and-evaporation">Puddle formation and evaporation</h2>
+
+<p>可能是游戏中最离奇但也是最聪明的Rendering解决方案。在游戏世界的整个地形之下，存在一个水面材质的平面，在下雨时会升高和降低有水的部分（水坑，池塘等），在太阳再次出现时将水蒸发。根据地面的距离水的表面会存在一个泡沫材质层。这个过程非常简单，但是却是游戏中的一个令人印象深刻的动态效果。</p>
+
+<h3 id="实例视频-17"><em>实例视频：</em></h3>
+
+<p>观察提示：观察水盆在开始下雨时如何“填满”水。</p>
+
+<p><a href="https://v.qq.com/x/page/k0767t7w02r.html">Puddle formation and evaporation 01</a></p>
+
+<p>观察提示：观察当水停止下雨并且太阳出来时水如何“蒸发”。
+<a href="https://v.qq.com/x/page/y0767b7tw0t.html">Puddle formation and evaporation 02</a></p>
+
+<h2 id="pastebin">Pastebin</h2>
+
+<p>实际上当我回过头来看文本转储中的一些游戏代码，它几乎证实了我发布的所有内容。我想我应该首先这么做，而不是在游戏过程中调查引擎如何工作，会让我的生活变得更轻松！</p>
+
+<p>这是Pastebin地址：<a href="https://pastebin.com/Jc9b0BCp">https://pastebin.com/Jc9b0BCp</a></p>
+
+<p>①reflectivity/reflectance，两者都译为反射率。但在表现半透明材质，SSS材质等透光材质的时候两者是有区别的，可以参考以下资料：<br />
+<a href="https://www.slideshare.net/LinyuanLi/definition-significance-measurementmodellingbrdf">Reflectivity VS Reflectance</a><br />
+<a href="http://performativedesign.com/definition/light-reflectivity/">Reflectivity and Reflectance</a></p>
+              
+            </div>
+          </div>
+          <div id="post-footer" class="post-footer main-content-wrap">
+            
+              
+            
+            
+  <div class="post-actions-wrap">
+      <nav >
+        <ul class="post-actions post-action-nav">
+          
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://milkp.github.io/2018/08/pbr%E7%99%BE%E7%A7%91%E7%BF%BB%E8%AF%91%E6%80%BB%E7%BB%93%E4%B8%80/" data-tooltip="PBR百科翻译总结（一）">
+              
+                  <i class="fa fa-angle-left"></i>
+                  <span class="hide-xs hide-sm text-small icon-ml">下一篇</span>
+                </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://milkp.github.io/2018/07/%E6%90%AC%E8%BF%90substance-lessons-for-beginners/" data-tooltip="[搬运]Substance Lessons for Beginners">
+              
+                  <span class="hide-xs hide-sm text-small icon-mr">上一篇</span>
+                  <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+          
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://milkp.github.io/2018/08/%E5%A1%9E%E5%B0%94%E8%BE%BE%E9%87%8E%E7%82%8A%E5%9B%BE%E5%BD%A2%E6%8A%80%E6%9C%AF%E5%88%86%E6%9E%90/">
+              <i class="fa fa-facebook-official"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://milkp.github.io/2018/08/%E5%A1%9E%E5%B0%94%E8%BE%BE%E9%87%8E%E7%82%8A%E5%9B%BE%E5%BD%A2%E6%8A%80%E6%9C%AF%E5%88%86%E6%9E%90/">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://milkp.github.io/2018/08/%E5%A1%9E%E5%B0%94%E8%BE%BE%E9%87%8E%E7%82%8A%E5%9B%BE%E5%BD%A2%E6%8A%80%E6%9C%AF%E5%88%86%E6%9E%90/">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          </li>
+        
+      
+      
+        <li class="post-action">
+          <a class="post-action-btn btn btn--default" href="#disqus_thread">
+            <i class="fa fa-comment-o"></i>
+          </a>
+        </li>
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+
+            
+              
+                <div id="disqus_thread">
+  <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+              
+            
+          </div>
+        </article>
+        <footer id="footer" class="main-content-wrap">
+  <span class="copyrights">
+    &copy; 2018 Wang Zuo. All Rights Reserved
+  </span>
+</footer>
+
+      </div>
+      <div id="bottom-bar" class="post-bottom-bar" data-behavior="4">
+        
+  <div class="post-actions-wrap">
+      <nav >
+        <ul class="post-actions post-action-nav">
+          
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://milkp.github.io/2018/08/pbr%E7%99%BE%E7%A7%91%E7%BF%BB%E8%AF%91%E6%80%BB%E7%BB%93%E4%B8%80/" data-tooltip="PBR百科翻译总结（一）">
+              
+                  <i class="fa fa-angle-left"></i>
+                  <span class="hide-xs hide-sm text-small icon-ml">下一篇</span>
+                </a>
+            </li>
+            <li class="post-action">
+              
+                <a class="post-action-btn btn btn--default tooltip--top" href="https://milkp.github.io/2018/07/%E6%90%AC%E8%BF%90substance-lessons-for-beginners/" data-tooltip="[搬运]Substance Lessons for Beginners">
+              
+                  <span class="hide-xs hide-sm text-small icon-mr">上一篇</span>
+                  <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+          
+        </ul>
+      </nav>
+    <ul class="post-actions post-action-share" >
+      
+        <li class="post-action hide-lg hide-md hide-sm">
+          <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions">
+            <i class="fa fa-share-alt"></i>
+          </a>
+        </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https://milkp.github.io/2018/08/%E5%A1%9E%E5%B0%94%E8%BE%BE%E9%87%8E%E7%82%8A%E5%9B%BE%E5%BD%A2%E6%8A%80%E6%9C%AF%E5%88%86%E6%9E%90/">
+              <i class="fa fa-facebook-official"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://twitter.com/intent/tweet?text=https://milkp.github.io/2018/08/%E5%A1%9E%E5%B0%94%E8%BE%BE%E9%87%8E%E7%82%8A%E5%9B%BE%E5%BD%A2%E6%8A%80%E6%9C%AF%E5%88%86%E6%9E%90/">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+        
+          <li class="post-action hide-xs">
+            <a class="post-action-btn btn btn--default" target="new" href="https://plus.google.com/share?url=https://milkp.github.io/2018/08/%E5%A1%9E%E5%B0%94%E8%BE%BE%E9%87%8E%E7%82%8A%E5%9B%BE%E5%BD%A2%E6%8A%80%E6%9C%AF%E5%88%86%E6%9E%90/">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          </li>
+        
+      
+      
+        <li class="post-action">
+          <a class="post-action-btn btn btn--default" href="#disqus_thread">
+            <i class="fa fa-comment-o"></i>
+          </a>
+        </li>
+      
+      <li class="post-action">
+        
+          <a class="post-action-btn btn btn--default" href="#">
+        
+          <i class="fa fa-list"></i>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+
+      </div>
+      <div id="share-options-bar" class="share-options-bar" data-behavior="4">
+  <i id="btn-close-shareoptions" class="fa fa-close"></i>
+  <ul class="share-options">
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fmilkp.github.io%2F2018%2F08%2F%25E5%25A1%259E%25E5%25B0%2594%25E8%25BE%25BE%25E9%2587%258E%25E7%2582%258A%25E5%259B%25BE%25E5%25BD%25A2%25E6%258A%2580%25E6%259C%25AF%25E5%2588%2586%25E6%259E%2590%2F">
+          <i class="fa fa-facebook-official"></i><span>分享到 Facebook</span>
+        </a>
+      </li>
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://twitter.com/intent/tweet?text=https%3A%2F%2Fmilkp.github.io%2F2018%2F08%2F%25E5%25A1%259E%25E5%25B0%2594%25E8%25BE%25BE%25E9%2587%258E%25E7%2582%258A%25E5%259B%25BE%25E5%25BD%25A2%25E6%258A%2580%25E6%259C%25AF%25E5%2588%2586%25E6%259E%2590%2F">
+          <i class="fa fa-twitter"></i><span>分享到 Twitter</span>
+        </a>
+      </li>
+    
+      <li class="share-option">
+        <a class="share-option-btn" target="new" href="https://plus.google.com/share?url=https%3A%2F%2Fmilkp.github.io%2F2018%2F08%2F%25E5%25A1%259E%25E5%25B0%2594%25E8%25BE%25BE%25E9%2587%258E%25E7%2582%258A%25E5%259B%25BE%25E5%25BD%25A2%25E6%258A%2580%25E6%259C%25AF%25E5%2588%2586%25E6%259E%2590%2F">
+          <i class="fa fa-google-plus"></i><span>分享到 Google&#43;</span>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+<div id="share-options-mask" class="share-options-mask"></div>
+    </div>
+    
+    <div id="about">
+  <div id="about-card">
+    <div id="about-btn-close">
+      <i class="fa fa-remove"></i>
+    </div>
+    
+      <img id="about-card-picture" src="https://milkp.github.io/images/Avater.jpg" alt="作者的图片" />
+    
+    <h4 id="about-card-name">Wang Zuo</h4>
+    
+      <div id="about-card-bio">Still Naive, Still Simple</div>
+    
+    
+      <div id="about-card-job">
+        <i class="fa fa-briefcase"></i>
+        <br/>
+        Game | Tech | Art
+      </div>
+    
+    
+      <div id="about-card-location">
+        <i class="fa fa-map-marker"></i>
+        <br/>
+        ShangHai
+      </div>
+    
+  </div>
+</div>
+
+    <div id="algolia-search-modal" class="modal-container">
+  <div class="modal">
+    <div class="modal-header">
+      <span class="close-button"><i class="fa fa-close"></i></span>
+      <a href="https://algolia.com" target="_blank" rel="noopener" class="searchby-algolia text-color-light link-unstyled">
+        <span class="searchby-algolia-text text-color-light text-small">by</span>
+        <img class="searchby-algolia-logo" src="https://www.algolia.com/static_assets/images/press/downloads/algolia-light.svg">
+      </a>
+      <i class="search-icon fa fa-search"></i>
+      <form id="algolia-search-form">
+        <input type="text" id="algolia-search-input" name="search"
+          class="form-control input--large search-input" placeholder="搜索" />
+      </form>
+    </div>
+    <div class="modal-body">
+      <div class="no-result text-color-light text-center"></div>
+      <div class="results">
+        
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://milkp.github.io/2018/08/pbr%E7%99%BE%E7%A7%91%E7%BF%BB%E8%AF%91%E6%80%BB%E7%BB%93%E4%B8%80/">
+                <h3 class="media-heading">PBR百科翻译总结（一）</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Aug 8, 2018
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>Polycount热心网友整理的PBR流程总结。原文太长，分几个部分来。  <a href="https://polycount.com/discussion/136390/pbr-physically-based-rendering-bible/p1">原帖</a>
+<a href="https://docs.google.com/document/d/1Fb9_KgCo0noxROKN4iT8ntTbx913e-t4Wc2nMRWPzNk/edit">原文件Google Driver</a>
+</p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://milkp.github.io/2018/08/%E5%A1%9E%E5%B0%94%E8%BE%BE%E9%87%8E%E7%82%8A%E5%9B%BE%E5%BD%A2%E6%8A%80%E6%9C%AF%E5%88%86%E6%9E%90/">
+                <h3 class="media-heading">塞尔达野炊图形技术分析</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Aug 8, 2018
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>一篇关于塞尔达野炊的图形技术分析。解析了不少技术点，也可以学习如何从游戏中剖析开发技术<a href="https://www.resetera.com/threads/zelda-breath-of-the-wild-the-technical-analysis.8197/">原文</a>
+</p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://milkp.github.io/2018/07/%E6%90%AC%E8%BF%90substance-lessons-for-beginners/">
+                <h3 class="media-heading">[搬运]Substance Lessons for Beginners</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jul 7, 2018
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>这是SD老鸟<a href="https://www.artstation.com/benkeeling/blog/OWGX/substance-lessons-for-beginners">Ben Keeling</a>发表在A站上的博文，文中点出的这几个问题其实不止初学者，一些熟手在制作材质过程中也会出现，所以觉得还是挺干货的，特此搬运。
+</p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+          <div class="media">
+            
+            <div class="media-body">
+              <a class="link-unstyled" href="https://milkp.github.io/2018/07/%E7%BF%BB%E8%AF%91life-of-a-triangle/">
+                <h3 class="media-heading">[翻译]Life of a Triangle</h3>
+              </a>
+              <span class="media-meta">
+                <span class="media-date text-small">
+                  Jul 7, 2018
+                </span>
+              </span>
+              <div class="media-content hide-xs font-merryweather"><p>核弹厂官方原文，将现代GPU Pipeline简单过了一遍，<a href="https://developer.nvidia.com/content/life-triangle-nvidias-logical-pipeline">英文原文</a>
+</p></div>
+            </div>
+            <div style="clear:both;"></div>
+            <hr>
+          </div>
+        
+      </div>
+    </div>
+    <div class="modal-footer">
+      <p class="results-count text-medium"
+         data-message-zero=""
+         data-message-one=""
+         data-message-other="">
+         4 posts found
+      </p>
+    </div>
+  </div>
+</div>
+    
+  
+    
+    <div id="cover" style="background-image:url('https://milkp.github.io/images/cover1.jpg');"></div>
+  
+
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js" integrity="sha256-/BfiIkHlHoVihZdc6TFuj7MmJ0TWcWsMXkeDFwhi0zw=" crossorigin="anonymous"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.7/js/jquery.fancybox.min.js" integrity="sha256-GEAnjcTqVP+vBp3SSc8bEDQqvWAZMiHyUSIorrWwH50=" crossorigin="anonymous"></script>
+
+
+<script src="https://milkp.github.io/js/tranquilpeak.js"></script>
+
+
+
+<script>
+$(document).ready(function() {
+  hljs.configure({ classPrefix: '', useBR: false });
+  $('pre.code-highlight > code, pre > code').each(function(i, block) {
+    if (!$(this).hasClass('codeblock')) {
+      $(this).addClass('codeblock');
+    }
+    hljs.highlightBlock(block);
+  });
+});
+</script>
+
+
+  
+    
+      <script>
+        var disqus_config = function () {
+          this.page.url = 'https:\/\/milkp.github.io\/2018\/08\/%E5%A1%9E%E5%B0%94%E8%BE%BE%E9%87%8E%E7%82%8A%E5%9B%BE%E5%BD%A2%E6%8A%80%E6%9C%AF%E5%88%86%E6%9E%90\/';
+          
+            this.page.identifier = '\/2018\/08\/%E5%A1%9E%E5%B0%94%E8%BE%BE%E9%87%8E%E7%82%8A%E5%9B%BE%E5%BD%A2%E6%8A%80%E6%9C%AF%E5%88%86%E6%9E%90\/'
+          
+        };
+        (function() {
+          
+          
+          if (window.location.hostname == "localhost") {
+            return;
+          }
+          var d = document, s = d.createElement('script');
+          var disqus_shortname = 'blurry';
+          s.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+
+          s.setAttribute('data-timestamp', +new Date());
+          (d.head || d.body).appendChild(s);
+        })();
+      </script>
+    
+  
+
+
+
+    
+  </body>
+</html>
+
